@@ -5,15 +5,21 @@
   
 
   
-  <title>Hexo</title>
+  <title>小程序首页加载白屏？那是你蠢 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://wangminchao.xyz/index.html">
+  <meta name="description" content="小程序前端之路（一）——首页加载问题1. 问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 2.原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序首页加载白屏？那是你蠢">
+<meta property="og:url" content="http://wangminchao.xyz/2018/05/22/小程序首页加载白屏？那是你蠢/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="小程序前端之路（一）——首页加载问题1. 问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 2.原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://mp.weixin.qq.com/debug/wxadoc/dev/image/api-login.jpg?t=2018518">
+<meta property="og:updated_time" content="2018-05-21T17:06:47.116Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="小程序首页加载白屏？那是你蠢">
+<meta name="twitter:description" content="小程序前端之路（一）——首页加载问题1. 问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 2.原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的">
+<meta name="twitter:image" content="https://mp.weixin.qq.com/debug/wxadoc/dev/image/api-login.jpg?t=2018518">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,9 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-小程序首页加载白屏？那是你蠢" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-小程序首页加载白屏？那是你蠢" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/22/小程序首页加载白屏？那是你蠢/" class="article-date">
   <time datetime="2018-05-21T17:05:36.000Z" itemprop="datePublished">2018-05-22</time>
@@ -75,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/22/小程序首页加载白屏？那是你蠢/">小程序首页加载白屏？那是你蠢</a>
+    <h1 class="article-title" itemprop="name">
+      小程序首页加载白屏？那是你蠢
     </h1>
   
 
@@ -102,97 +106,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-手机连不上电脑？那是你笨" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/20/手机连不上电脑？那是你笨/" class="article-date">
-  <time datetime="2018-05-20T07:57:05.000Z" itemprop="datePublished">2018-05-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/20/手机连不上电脑？那是你笨/">手机连不上电脑？那是你笨</a>
-    </h1>
+    <a href="/2018/05/20/手机连不上电脑？那是你笨/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">手机连不上电脑？那是你笨</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="手机连不上电脑？那是你笨"><a href="#手机连不上电脑？那是你笨" class="headerlink" title="手机连不上电脑？那是你笨"></a>手机连不上电脑？那是你笨</h1><p>闲来无事，想试试weex，进入weex官网。看着新奇的用Vue来写app，想起了当年在实验室写app的场景。</p>
-<h2 id="废话"><a href="#废话" class="headerlink" title="废话"></a>废话</h2><p>还好我看的懂weex的官方文档的字，照着官网一步步下来，总算在本地搭建好了开发环境。<br>接下来就是要使用<a href="https://weex.incubator.apache.org/cn/tools/playground.html" target="_blank" rel="noopener">Weex playground app</a>来预览手机应用了。</p>
-<p>接下来就遇到了<strong>手机连不上电脑的问题</strong>，用<code>Weex playground app</code>扫描启动的网页，手机显示连不上该网页，上网搜了一大堆，说是防火墙的问题，机智的我把防火墙关了，但还是没有办法连上。</p>
-<h2 id="我勒个去"><a href="#我勒个去" class="headerlink" title="我勒个去"></a>我勒个去</h2><p>在我即将崩溃的时候，发现启动的IP地址是<code>192.168.79.1</code>。这怎么和我平常看到的本地IP不一样啊，本地的不应该是<code>192.168.0.xxx</code>么？于是我ipconfig了一下，惊奇的发现<code>192.168.79.1</code>旁边写着大大的<strong>VM</strong>，我操，他娘的意大利炮。</p>
-<h2 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h2><p>我用意大利炮把VM的无线适配器给轰掉了，好了，解决了。再次启动的时候就是我亲切的<code>192.168.0.xxx</code>了。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="cjhgiarj2000188w7ym0bm5wi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/19/hello-world/" class="article-date">
-  <time datetime="2018-05-18T17:37:22.716Z" itemprop="datePublished">2018-05-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/05/19/hello-world/" data-id="cjhgiarix000088w7ddoo44k4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
