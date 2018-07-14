@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
+  
 
+  
   <title>Michael&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Michael&#39;s Blog">
-  <meta property="og:url" content="http://wangminchao.xyz/index.html">
-  <meta property="og:site_name" content="Michael&#39;s Blog">
-  <meta property="og:locale" content="default">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Michael&#39;s Blog">
-  <link rel="alternate" href="/atom.xml" title="Michael&#39;s Blog" type="application/atom+xml">
-  <link rel="icon" href="/favicon.png">
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<meta property="og:title" content="Michael&#39;s Blog">
+<meta property="og:url" content="http://wangminchao.xyz/index.html">
+<meta property="og:site_name" content="Michael&#39;s Blog">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Michael&#39;s Blog">
+  
+    <link rel="alternate" href="/atom.xml" title="Michael&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -23,535 +30,439 @@
   <div id="container">
     <div id="wrap">
       <header id="header">
-        <div id="banner"></div>
-        <div id="header-outer" class="outer">
-          <div id="header-title" class="inner">
-            <h1 id="logo-wrap">
-              <a href="/" id="logo">Michael&#39;s Blog</a>
-            </h1>
-
-          </div>
-          <div id="header-inner" class="inner">
-            <nav id="main-nav">
-              <a id="main-nav-toggle" class="nav-icon"></a>
-
-              <a class="main-nav-link" href="/">Home</a>
-
-              <a class="main-nav-link" href="/archives">Archives</a>
-
-            </nav>
-            <nav id="sub-nav">
-
-              <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-
-              <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-            </nav>
-            <div id="search-form-wrap">
-              <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
-                <input type="search" name="q" class="search-form-input" placeholder="Search">
-                <button type="submit" class="search-form-submit">&#xF002;</button>
-                <input type="hidden" name="sitesearch" value="http://wangminchao.xyz">
-              </form>
-            </div>
-          </div>
-        </div>
-      </header>
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Michael&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wangminchao.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
       <div class="outer">
         <section id="main">
-
-          <article id="post-代码检查工具eslint，是时候认识它了" class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-meta">
-              <a href="/2018/06/12/代码检查工具eslint，是时候认识它了/" class="article-date">
-                <time datetime="2018-06-11T17:11:50.000Z" itemprop="datePublished">2018-06-12</time>
-              </a>
-
-            </div>
-            <div class="article-inner">
-
-
-              <header class="article-header">
-
-
-                <h1 itemprop="name">
-                  <a class="article-title" href="/2018/06/12/代码检查工具eslint，是时候认识它了/">代码检查工具eslint，是时候认识它了</a>
-                </h1>
-
-
-              </header>
-
-              <div class="article-entry" itemprop="articleBody">
-
-                <h1 id="ESLINT">
-                  <a href="#ESLINT" class="headerlink" title="ESLINT"></a>ESLINT</h1>
-                <h2 id="Airbnb">
-                  <a href="#Airbnb" class="headerlink" title="Airbnb"></a>Airbnb</h2>
-                <p>看到这个大家都能想到什么？对了，爱彼迎，他是一款驴友钟爱的APP。什么？你说Airbnb是js的一种代码规范？你在逗我？</p>
-                <h3 id="这是什么？">
-                  <a href="#这是什么？" class="headerlink" title="这是什么？"></a>这是什么？</h3>
-                <p>在github搜索javascript，就会看到Airbnb排在第一名啊。这是什么？这是知道js的人都需要知道的事啊。</p>
-                <h3 id="代码规范">
-                  <a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h3>
-                <p>Airbnb是一种比较严格的js代码规范，可以用eslint在代码中检查js文件中那些垃圾代码，帮助我们养成更好的书写习惯，也能帮助我们看懂团队其他人的代码。这就可以大大提高我们的码代码的效率了。</p>
-                <h2 id="怎么用？">
-                  <a href="#怎么用？" class="headerlink" title="怎么用？"></a>怎么用？</h2>
-                <p>首先去
-                  <a href="http://eslint.cn/" target="_blank" rel="noopener">eslint官网</a>安装
-                  <code>eslint</code>。然后用
-                  <code>eslint --init</code>初始化代码规范，在里面可以选择
-                  <code>airbnb</code>风格。安装完毕之后，我们就可以使用它了。最简单的就是
-                  <code>eslint a.js</code>可以检查
-                  <code>a.js</code>中的错误代码。</p>
-                <h2 id="高阶用法">
-                  <a href="#高阶用法" class="headerlink" title="高阶用法"></a>高阶用法</h2>
-                <p>
-                  <code>eslint</code>还是要和编辑器结合使用才能发挥它的正真实例，各大主流的编辑器都有它的相关插件。
-                  <code>vscode</code>和
-                  <code>sublime</code>我都有用，我就简单介绍一下。</p>
-                <h3 id="vscode">
-                  <a href="#vscode" class="headerlink" title="vscode"></a>vscode</h3>
-                <p>微软开发的这款代码编辑器还是相当不错的，可以说是
-                  <code>windows</code>操作系统上很容易上手的也比较轻量的编辑器。
-                  <code>vscode</code>安装
-                  <code>eslint插件</code>就可以正常使用了，也提供保存自动
-                  <code>--fix</code>的功能，很好很强大。</p>
-                <h3 id="sublime">
-                  <a href="#sublime" class="headerlink" title="sublime"></a>sublime</h3>
-                <p>这个安装
-                  <code>ESLINT</code>这个插件也就足够了，就是要自己去
-                  <code>setting</code>里面去配置一下。配置完成后，需要检查的时候右键
-                  <code>eslint</code>一下，错误提示都会显现。
-                  <code>sublime</code>支持自己配置快捷键，
-                  <code>--fix</code>可以使用快捷键实现。</p>
-                <h2 id="学会了">
-                  <a href="#学会了" class="headerlink" title="学会了"></a>学会了</h2>
-                <p>学会使用之后我们项目的代码质量将会有很大的提升，我们自身的写代码的习惯也会逐渐规范起来，这都是很有必要的事。但这毕竟是工具，我们可以依靠工具来修复我们的代码，重要的还是我们自己要去将自己的代码规范起来。</p>
-
-
-              </div>
-              <footer class="article-footer">
-                <a data-url="http://wangminchao.xyz/2018/06/12/代码检查工具eslint，是时候认识它了/" data-id="cjiajheml00022cw7sgwcss5p" class="article-share-link">Share</a>
-
-
-              </footer>
-            </div>
-
-          </article>
-
-
-
-          <article id="post-RCA听过没？这次就能知道了" class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-meta">
-              <a href="/2018/05/23/RCA听过没？这次就能知道了/" class="article-date">
-                <time datetime="2018-05-22T17:38:01.000Z" itemprop="datePublished">2018-05-23</time>
-              </a>
-
-            </div>
-            <div class="article-inner">
-
-
-              <header class="article-header">
-
-
-                <h1 itemprop="name">
-                  <a class="article-title" href="/2018/05/23/RCA听过没？这次就能知道了/">RCA听过没？这次就能知道了</a>
-                </h1>
-
-
-              </header>
-
-              <div class="article-entry" itemprop="articleBody">
-
-                <h1 id="Root-cause-analysis">
-                  <a href="#Root-cause-analysis" class="headerlink" title="Root cause analysis"></a>Root cause analysis</h1>
-                <p>RCA也就是根本原因分析，在今天之前写代码都是认为找到代码的原因就可以皆大欢喜了，到现在才知道。找寻bug产生的和解决的根本方法，或是bug的根本原因才是关键。</p>
-                <p>今天大概讲了几个例子，其中有讲到我上一篇的首页加载白屏的问题。我在上一篇的总结中说到，需要发现这个问题需要前后端都通或者是测试中复现，又或者是对通信逻辑熟悉，才能发现这个问题。</p>
-                <p>其实可以总结为两点：</p>
-                <ol>
-                  <li>测试用例的不足</li>
-                  <li>业务逻辑或者是代码逻辑不熟</li>
-                </ol>
-                <h2 id="测试用例不足">
-                  <a href="#测试用例不足" class="headerlink" title="测试用例不足"></a>测试用例不足</h2>
-                <p>这个其实可以在我们写完代码，重新测试的时候，去用一个新的身份或者是机器去测试，这样可以浮现很多问题。</p>
-                <h2 id="逻辑不熟">
-                  <a href="#逻辑不熟" class="headerlink" title="逻辑不熟"></a>逻辑不熟</h2>
-                <p>这个只能靠我们自己去熟悉业务或是代码逻辑来弥补，尽量做到熟悉每一行代码，这样在更改代码过程中可以减少衍生bug的出现。</p>
-                <h2 id="总结">
-                  <a href="#总结" class="headerlink" title="总结"></a>总结</h2>
-                <p>看问题需要站在几个角度去考虑，身为最基层的码农，需要考虑我为什么会有这样的bug，以后如何规避，如何减少修复后新bug的产生。
-                  <br>如果是站在团队角度：</p>
-                <ol>
-                  <li>需要考虑大家出现同类的bug是否可以快速解决，大家是否有一套可以共用的API文档，来解决此类bug</li>
-                  <li>如何和后端形成良好的沟通，减少前后端通信上的bug</li>
-                  <li>分享技术网站以及搜索方法，帮助团队快速寻找问题的解决办法。</li>
-                  <li>增加测试用例，来测试常见案例和边缘案例</li>
-                  <li>理想状态形成团队成员互相review的机制，稳定提高团队的代码质量</li>
-                </ol>
-
-
-              </div>
-              <footer class="article-footer">
-                <a data-url="http://wangminchao.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="cjiajhemd00002cw7k54t7xq8" class="article-share-link">Share</a>
-
-
-              </footer>
-            </div>
-
-          </article>
-
-
-
-          <article id="post-小程序首页加载白屏？那是你蠢" class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-meta">
-              <a href="/2018/05/22/小程序首页加载白屏？那是你蠢/" class="article-date">
-                <time datetime="2018-05-21T17:05:36.000Z" itemprop="datePublished">2018-05-22</time>
-              </a>
-
-            </div>
-            <div class="article-inner">
-
-
-              <header class="article-header">
-
-
-                <h1 itemprop="name">
-                  <a class="article-title" href="/2018/05/22/小程序首页加载白屏？那是你蠢/">小程序首页加载白屏？那是你蠢</a>
-                </h1>
-
-
-              </header>
-
-              <div class="article-entry" itemprop="articleBody">
-
-                <h1 id="小程序前端之路（一）——首页加载问题">
-                  <a href="#小程序前端之路（一）——首页加载问题" class="headerlink" title="小程序前端之路（一）——首页加载问题"></a>小程序前端之路（一）——首页加载问题</h1>
-                <h2 id="1-问题">
-                  <a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h2>
-                <p>今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。
-                  <br>由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。</p>
-                <h2 id="2-原因">
-                  <a href="#2-原因" class="headerlink" title="2.原因"></a>2.原因</h2>
-                <p>利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。
-                  <br>当我们请求后台返回登录状态的时候，一般使用的是异步请求，而当我们加载首页数据时，异步请求的登录状态还未返回，所以会导致我们拉取不到后台数据。</p>
-                <h2 id="3-解决方案">
-                  <a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h2>
-                <p>解决办法是用异步回调的方式，将加载数据执行再获取登录状态之后，我这里使用的是Promise方法。</p>
-                <figure class="highlight js">
-                  <table>
-                    <tr>
-                      <td class="gutter">
-                        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre>
-                      </td>
-                      <td class="code">
-                        <pre><span class="line"><span class="comment">// 这里是获取登录状态的promise方法</span></span><br><span class="line">myPromiseFunction: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line">    <span class="comment">// 这里返回promise</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span>&#123;</span><br><span class="line">      wx.login(&#123;</span><br><span class="line">        success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">          util.request(&#123;</span><br><span class="line">            url: <span class="string">'后台的url地址'</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">              code: res.code</span><br><span class="line">            &#125;,</span><br><span class="line">            success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="comment">// 缓存登陆状态</span></span><br><span class="line">              wx.setStorageSync(<span class="string">'res'</span>, res)</span><br><span class="line">              that.globalData.res = res</span><br><span class="line">              <span class="comment">// 可以选择将信息返回进行下一步操作</span></span><br><span class="line">              resolve(res)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre>
-                      </td>
-                    </tr>
-                  </table>
-                </figure>
-                <p>在这里准备好promise之后，我们就可以在我想要在它后面执行的地方进行调用其他方法了，下面是我index.js中调用这个方法的例子。</p>
-                <figure class="highlight js">
-                  <table>
-                    <tr>
-                      <td class="gutter">
-                        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre>
-                      </td>
-                      <td class="code">
-                        <pre><span class="line"><span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line"><span class="comment">// promise加载数据</span></span><br><span class="line">getApp().myPromiseFunction().then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里value是我们resolve回来的值</span></span><br><span class="line">    <span class="built_in">console</span>.log(value)</span><br><span class="line">    <span class="comment">// 初始化页面</span></span><br><span class="line">    that.init()</span><br><span class="line">&#125;)</span><br></pre>
-                      </td>
-                    </tr>
-                  </table>
-                </figure>
-                <h2 id="总结">
-                  <a href="#总结" class="headerlink" title="总结"></a>总结</h2>
-                <p>这个问题其实挺难复现，如果你前后端都通，这个问题比较容易发现。不然我们需要等待sessionkey过期，我们才能找到这个问题。以上。</p>
-                <h2 id="附录">
-                  <a href="#附录" class="headerlink" title="附录"></a>附录</h2>
-                <p>最后贴出小程序官网给的一张请求登陆的流程图。看了这个可以加深对前后端通信的理解。
-                  <br>
-                  <img src="https://mp.weixin.qq.com/debug/wxadoc/dev/image/api-login.jpg?t=2018518" alt="小程序登陆流程时序">
-                </p>
-
-
-              </div>
-              <footer class="article-footer">
-                <a data-url="http://wangminchao.xyz/2018/05/22/小程序首页加载白屏？那是你蠢/" data-id="cjiajhemn00032cw76gnh4kma" class="article-share-link">Share</a>
-
-
-              </footer>
-            </div>
-
-          </article>
-
-
-
-          <article id="post-手机连不上电脑？那是你笨" class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-meta">
-              <a href="/2018/05/20/手机连不上电脑？那是你笨/" class="article-date">
-                <time datetime="2018-05-20T07:57:05.000Z" itemprop="datePublished">2018-05-20</time>
-              </a>
-
-            </div>
-            <div class="article-inner">
-
-
-              <header class="article-header">
-
-
-                <h1 itemprop="name">
-                  <a class="article-title" href="/2018/05/20/手机连不上电脑？那是你笨/">手机连不上电脑？那是你笨</a>
-                </h1>
-
-
-              </header>
-
-              <div class="article-entry" itemprop="articleBody">
-
-                <h1 id="手机连不上电脑？那是你笨">
-                  <a href="#手机连不上电脑？那是你笨" class="headerlink" title="手机连不上电脑？那是你笨"></a>手机连不上电脑？那是你笨</h1>
-                <p>闲来无事，想试试weex，进入weex官网。看着新奇的用Vue来写app，想起了当年在实验室写app的场景。</p>
-                <h2 id="废话">
-                  <a href="#废话" class="headerlink" title="废话"></a>废话</h2>
-                <p>还好我看的懂weex的官方文档的字，照着官网一步步下来，总算在本地搭建好了开发环境。
-                  <br>接下来就是要使用
-                  <a href="https://weex.incubator.apache.org/cn/tools/playground.html" target="_blank" rel="noopener">Weex playground app</a>来预览手机应用了。</p>
-                <p>接下来就遇到了
-                  <strong>手机连不上电脑的问题</strong>，用
-                  <code>Weex playground app</code>扫描启动的网页，手机显示连不上该网页，上网搜了一大堆，说是防火墙的问题，机智的我把防火墙关了，但还是没有办法连上。</p>
-                <h2 id="我勒个去">
-                  <a href="#我勒个去" class="headerlink" title="我勒个去"></a>我勒个去</h2>
-                <p>在我即将崩溃的时候，发现启动的IP地址是
-                  <code>192.168.79.1</code>。这怎么和我平常看到的本地IP不一样啊，本地的不应该是
-                  <code>192.168.0.xxx</code>么？于是我ipconfig了一下，惊奇的发现
-                  <code>192.168.79.1</code>旁边写着大大的
-                  <strong>VM</strong>，我操，他娘的意大利炮。</p>
-                <h2 id="最终结果">
-                  <a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h2>
-                <p>我用意大利炮把VM的无线适配器给轰掉了，好了，解决了。再次启动的时候就是我亲切的
-                  <code>192.168.0.xxx</code>了。</p>
-
-
-              </div>
-              <footer class="article-footer">
-                <a data-url="http://wangminchao.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="cjiajhemo00042cw70we24tie" class="article-share-link">Share</a>
-
-
-              </footer>
-            </div>
-
-          </article>
-
-
-
-          <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-            <div class="article-meta">
-              <a href="/2018/05/19/hello-world/" class="article-date">
-                <time datetime="2018-05-18T17:37:22.716Z" itemprop="datePublished">2018-05-19</time>
-              </a>
-
-            </div>
-            <div class="article-inner">
-
-
-              <header class="article-header">
-
-
-                <h1 itemprop="name">
-                  <a class="article-title" href="/2018/05/19/hello-world/">Hello World</a>
-                </h1>
-
-
-              </header>
-
-              <div class="article-entry" itemprop="articleBody">
-
-                <p>Welcome to
-                  <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check
-                  <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in
-                  <a
-                    href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on
-                    <a href="https://github.com/hexojs/hexo/issues" target="_blank"
-                      rel="noopener">GitHub</a>.</p>
-                <h2 id="Quick-Start">
-                  <a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2>
-                <h3 id="Create-a-new-post">
-                  <a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3>
-                <figure class="highlight bash">
-                  <table>
-                    <tr>
-                      <td class="gutter">
-                        <pre><span class="line">1</span><br></pre>
-                      </td>
-                      <td class="code">
-                        <pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre>
-                      </td>
-                    </tr>
-                  </table>
-                </figure>
-                <p>More info:
-                  <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a>
-                </p>
-                <h3 id="Run-server">
-                  <a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3>
-                <figure class="highlight bash">
-                  <table>
-                    <tr>
-                      <td class="gutter">
-                        <pre><span class="line">1</span><br></pre>
-                      </td>
-                      <td class="code">
-                        <pre><span class="line">$ hexo server</span><br></pre>
-                      </td>
-                    </tr>
-                  </table>
-                </figure>
-                <p>More info:
-                  <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a>
-                </p>
-                <h3 id="Generate-static-files">
-                  <a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3>
-                <figure class="highlight bash">
-                  <table>
-                    <tr>
-                      <td class="gutter">
-                        <pre><span class="line">1</span><br></pre>
-                      </td>
-                      <td class="code">
-                        <pre><span class="line">$ hexo generate</span><br></pre>
-                      </td>
-                    </tr>
-                  </table>
-                </figure>
-                <p>More info:
-                  <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a>
-                </p>
-                <h3 id="Deploy-to-remote-sites">
-                  <a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3>
-                <figure class="highlight bash">
-                  <table>
-                    <tr>
-                      <td class="gutter">
-                        <pre><span class="line">1</span><br></pre>
-                      </td>
-                      <td class="code">
-                        <pre><span class="line">$ hexo deploy</span><br></pre>
-                      </td>
-                    </tr>
-                  </table>
-                </figure>
-                <p>More info:
-                  <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a>
-                </p>
-
-
-              </div>
-              <footer class="article-footer">
-                <a data-url="http://wangminchao.xyz/2018/05/19/hello-world/" data-id="cjiajhemi00012cw7nn4nymsx" class="article-share-link">Share</a>
-
-
-              </footer>
-            </div>
-
-          </article>
-
-
-
-
-
-        </section>
-
-        <aside id="sidebar">
-
-
-
-
-
-
-
-
-
-
-          <div class="widget-wrap">
-            <h3 class="widget-title">Archives</h3>
-            <div class="widget">
-              <ul class="archive-list">
-                <li class="archive-list-item">
-                  <a class="archive-list-link" href="/archives/2018/06/">June 2018</a>
-                </li>
-                <li class="archive-list-item">
-                  <a class="archive-list-link" href="/archives/2018/05/">May 2018</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-
-
-
-          <div class="widget-wrap">
-            <h3 class="widget-title">Recent Posts</h3>
-            <div class="widget">
-              <ul>
-
-                <li>
-                  <a href="/2018/06/12/代码检查工具eslint，是时候认识它了/">代码检查工具eslint，是时候认识它了</a>
-                </li>
-
-                <li>
-                  <a href="/2018/05/23/RCA听过没？这次就能知道了/">RCA听过没？这次就能知道了</a>
-                </li>
-
-                <li>
-                  <a href="/2018/05/22/小程序首页加载白屏？那是你蠢/">小程序首页加载白屏？那是你蠢</a>
-                </li>
-
-                <li>
-                  <a href="/2018/05/20/手机连不上电脑？那是你笨/">手机连不上电脑？那是你笨</a>
-                </li>
-
-                <li>
-                  <a href="/2018/05/19/hello-world/">Hello World</a>
-                </li>
-
-              </ul>
-            </div>
-          </div>
-
-
-        </aside>
-
+  
+    <article id="post-简单的双向绑定" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/14/简单的双向绑定/" class="article-date">
+  <time datetime="2018-07-14T15:25:38.000Z" itemprop="datePublished">2018-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/14/简单的双向绑定/">简单的双向绑定</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简单的双向绑定"><a href="#简单的双向绑定" class="headerlink" title="简单的双向绑定"></a>简单的双向绑定</h1><p>主要用的方法就是<code>Object.defineProperties</code>。</p>
+<blockquote>
+<p>The Object.defineProperties() method defines new or modifies existing properties directly on an object, returning the object.</p>
+</blockquote>
+<p>这个方法可以直接添加或修改对象存在的属性值，这些属性值包括:</p>
+<ul>
+<li><p>configurable</p>
+<p>默认为 <code>false</code></p>
+<p><code>true</code> 当且仅当该属性描述符的类型可以被改变并且该属性可以从对应对象中删除。</p>
+</li>
+<li><p>enumerable</p>
+<p>默认为 <code>false</code></p>
+<p><code>true</code> 当且仅当在枚举相应对象上的属性时该属性显现。</p>
+</li>
+<li><p>value</p>
+<p>默认为 <code>undefined</code></p>
+<p>与属性关联的值。可以是任何有效的<code>JavaScript</code>值（数字，对象，函数等）。</p>
+</li>
+<li><p>writeable</p>
+<p>默认为 <code>false</code></p>
+<p><code>true</code>当且仅当与该属性相关联的值可以用<code>assignment operator</code>改变时。</p>
+</li>
+<li><p>get</p>
+<p>默认为 <code>undefined</code></p>
+<p>作为该属性的 <code>getter</code> 函数，如果没有 <code>getter</code> 则为<code>undefined</code>。函数返回值将被用作属性的值。</p>
+</li>
+<li><p>set</p>
+<p>默认为 <code>undefined</code></p>
+<p>作为属性的 <code>setter</code> 函数，如果没有 <code>setter</code> 则为<code>undefined</code>。函数将仅接受参数赋值给该属性的新值。</p>
+</li>
+</ul>
+<h2 id="主要原理"><a href="#主要原理" class="headerlink" title="主要原理"></a>主要原理</h2><p>就是通过设定对象的get和set属性来实现组件之间的绑定效果。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    input1=&gt;<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"input1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    input2=&gt;<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"input2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    我每次比input1的值加1=&gt;<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"span"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当input1的值改变时触发<code>set</code>属性，input2的<code>set</code>也会执行，带动<code>span</code>内的值的变化。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oInput1 = <span class="built_in">document</span>.getElementById(<span class="string">'input1'</span>);</span><br><span class="line"><span class="keyword">var</span> oInput2 = <span class="built_in">document</span>.getElementById(<span class="string">'input2'</span>);</span><br><span class="line"><span class="keyword">var</span> oSpan = <span class="built_in">document</span>.getElementById(<span class="string">'span'</span>);</span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperties(obj, &#123;</span><br><span class="line">    val1: &#123;</span><br><span class="line">        configurable: <span class="literal">true</span>,</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            oInput1.value = <span class="number">0</span>;</span><br><span class="line">            oInput2.value = <span class="number">0</span>;</span><br><span class="line">            oSpan.innerHTML = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        &#125;,</span><br><span class="line">        set: <span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>) </span>&#123;</span><br><span class="line">            oInput2.value = newValue;</span><br><span class="line">            oSpan.innerHTML = <span class="built_in">Number</span>(newValue) ? <span class="built_in">Number</span>(newValue) : <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    val2: &#123;</span><br><span class="line">        configurable: <span class="literal">true</span>,</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            oInput1.value = <span class="number">0</span>;</span><br><span class="line">            oInput2.value = <span class="number">0</span>;</span><br><span class="line">            oSpan.innerHTML = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        &#125;,</span><br><span class="line">        set: <span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>) </span>&#123;</span><br><span class="line">            oInput1.value = newValue;</span><br><span class="line">            oSpan.innerHTML = <span class="built_in">Number</span>(newValue)+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">oInput1.value = obj.val1;</span><br><span class="line">oInput1.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    obj.val1 = oInput1.value;</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line">oInput2.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    obj.val2 = oInput2.value;</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2018/07/14/简单的双向绑定/" data-id="cjjll86vm0005ysw7qvwj96d4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-代码检查工具eslint，是时候认识它了" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/12/代码检查工具eslint，是时候认识它了/" class="article-date">
+  <time datetime="2018-06-11T17:11:50.000Z" itemprop="datePublished">2018-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/12/代码检查工具eslint，是时候认识它了/">代码检查工具eslint，是时候认识它了</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ESLINT"><a href="#ESLINT" class="headerlink" title="ESLINT"></a>ESLINT</h1><h2 id="Airbnb"><a href="#Airbnb" class="headerlink" title="Airbnb"></a>Airbnb</h2><p>看到这个大家都能想到什么？对了，爱彼迎，他是一款驴友钟爱的APP。什么？你说Airbnb是js的一种代码规范？你在逗我？</p>
+<h3 id="这是什么？"><a href="#这是什么？" class="headerlink" title="这是什么？"></a>这是什么？</h3><p>在github搜索javascript，就会看到Airbnb排在第一名啊。这是什么？这是知道js的人都需要知道的事啊。</p>
+<h3 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h3><p>Airbnb是一种比较严格的js代码规范，可以用eslint在代码中检查js文件中那些垃圾代码，帮助我们养成更好的书写习惯，也能帮助我们看懂团队其他人的代码。这就可以大大提高我们的码代码的效率了。</p>
+<h2 id="怎么用？"><a href="#怎么用？" class="headerlink" title="怎么用？"></a>怎么用？</h2><p>首先去<a href="http://eslint.cn/" target="_blank" rel="noopener">eslint官网</a>安装<code>eslint</code>。然后用<code>eslint --init</code>初始化代码规范，在里面可以选择<code>airbnb</code>风格。安装完毕之后，我们就可以使用它了。最简单的就是<code>eslint a.js</code>可以检查<code>a.js</code>中的错误代码。</p>
+<h2 id="高阶用法"><a href="#高阶用法" class="headerlink" title="高阶用法"></a>高阶用法</h2><p><code>eslint</code>还是要和编辑器结合使用才能发挥它的正真实例，各大主流的编辑器都有它的相关插件。<code>vscode</code>和<code>sublime</code>我都有用，我就简单介绍一下。</p>
+<h3 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h3><p>微软开发的这款代码编辑器还是相当不错的，可以说是<code>windows</code>操作系统上很容易上手的也比较轻量的编辑器。<code>vscode</code>安装<code>eslint插件</code>就可以正常使用了，也提供保存自动<code>--fix</code>的功能，很好很强大。</p>
+<h3 id="sublime"><a href="#sublime" class="headerlink" title="sublime"></a>sublime</h3><p>这个安装<code>ESLINT</code>这个插件也就足够了，就是要自己去<code>setting</code>里面去配置一下。配置完成后，需要检查的时候右键<code>eslint</code>一下，错误提示都会显现。<code>sublime</code>支持自己配置快捷键，<code>--fix</code>可以使用快捷键实现。</p>
+<h2 id="学会了"><a href="#学会了" class="headerlink" title="学会了"></a>学会了</h2><p>学会使用之后我们项目的代码质量将会有很大的提升，我们自身的写代码的习惯也会逐渐规范起来，这都是很有必要的事。但这毕竟是工具，我们可以依靠工具来修复我们的代码，重要的还是我们自己要去将自己的代码规范起来。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2018/06/12/代码检查工具eslint，是时候认识它了/" data-id="cjjll86vj0003ysw788ci1el1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-RCA听过没？这次就能知道了" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/23/RCA听过没？这次就能知道了/" class="article-date">
+  <time datetime="2018-05-22T17:38:01.000Z" itemprop="datePublished">2018-05-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/23/RCA听过没？这次就能知道了/">RCA听过没？这次就能知道了</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Root-cause-analysis"><a href="#Root-cause-analysis" class="headerlink" title="Root cause analysis"></a>Root cause analysis</h1><p>RCA也就是根本原因分析，在今天之前写代码都是认为找到代码的原因就可以皆大欢喜了，到现在才知道。找寻bug产生的和解决的根本方法，或是bug的根本原因才是关键。</p>
+<p>今天大概讲了几个例子，其中有讲到我上一篇的首页加载白屏的问题。我在上一篇的总结中说到，需要发现这个问题需要前后端都通或者是测试中复现，又或者是对通信逻辑熟悉，才能发现这个问题。</p>
+<p>其实可以总结为两点：</p>
+<ol>
+<li>测试用例的不足</li>
+<li>业务逻辑或者是代码逻辑不熟</li>
+</ol>
+<h2 id="测试用例不足"><a href="#测试用例不足" class="headerlink" title="测试用例不足"></a>测试用例不足</h2><p>这个其实可以在我们写完代码，重新测试的时候，去用一个新的身份或者是机器去测试，这样可以浮现很多问题。</p>
+<h2 id="逻辑不熟"><a href="#逻辑不熟" class="headerlink" title="逻辑不熟"></a>逻辑不熟</h2><p>这个只能靠我们自己去熟悉业务或是代码逻辑来弥补，尽量做到熟悉每一行代码，这样在更改代码过程中可以减少衍生bug的出现。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>看问题需要站在几个角度去考虑，身为最基层的码农，需要考虑我为什么会有这样的bug，以后如何规避，如何减少修复后新bug的产生。<br>如果是站在团队角度：</p>
+<ol>
+<li>需要考虑大家出现同类的bug是否可以快速解决，大家是否有一套可以共用的API文档，来解决此类bug</li>
+<li>如何和后端形成良好的沟通，减少前后端通信上的bug</li>
+<li>分享技术网站以及搜索方法，帮助团队快速寻找问题的解决办法。</li>
+<li>增加测试用例，来测试常见案例和边缘案例</li>
+<li>理想状态形成团队成员互相review的机制，稳定提高团队的代码质量</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="cjjll86vf0001ysw7qkp5hg0b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-小程序首页加载白屏？那是你蠢" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/22/小程序首页加载白屏？那是你蠢/" class="article-date">
+  <time datetime="2018-05-21T17:05:36.000Z" itemprop="datePublished">2018-05-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/22/小程序首页加载白屏？那是你蠢/">小程序首页加载白屏？那是你蠢</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="小程序前端之路（一）——首页加载问题"><a href="#小程序前端之路（一）——首页加载问题" class="headerlink" title="小程序前端之路（一）——首页加载问题"></a>小程序前端之路（一）——首页加载问题</h1><h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h2><p>今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。<br>由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。</p>
+<h2 id="2-原因"><a href="#2-原因" class="headerlink" title="2.原因"></a>2.原因</h2><p>利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。<br>当我们请求后台返回登录状态的时候，一般使用的是异步请求，而当我们加载首页数据时，异步请求的登录状态还未返回，所以会导致我们拉取不到后台数据。</p>
+<h2 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h2><p>解决办法是用异步回调的方式，将加载数据执行再获取登录状态之后，我这里使用的是Promise方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里是获取登录状态的promise方法</span></span><br><span class="line">myPromiseFunction: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line">    <span class="comment">// 这里返回promise</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span>&#123;</span><br><span class="line">      wx.login(&#123;</span><br><span class="line">        success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">          util.request(&#123;</span><br><span class="line">            url: <span class="string">'后台的url地址'</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">              code: res.code</span><br><span class="line">            &#125;,</span><br><span class="line">            success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="comment">// 缓存登陆状态</span></span><br><span class="line">              wx.setStorageSync(<span class="string">'res'</span>, res)</span><br><span class="line">              that.globalData.res = res</span><br><span class="line">              <span class="comment">// 可以选择将信息返回进行下一步操作</span></span><br><span class="line">              resolve(res)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>在这里准备好promise之后，我们就可以在我想要在它后面执行的地方进行调用其他方法了，下面是我index.js中调用这个方法的例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line"><span class="comment">// promise加载数据</span></span><br><span class="line">getApp().myPromiseFunction().then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里value是我们resolve回来的值</span></span><br><span class="line">    <span class="built_in">console</span>.log(value)</span><br><span class="line">    <span class="comment">// 初始化页面</span></span><br><span class="line">    that.init()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个问题其实挺难复现，如果你前后端都通，这个问题比较容易发现。不然我们需要等待sessionkey过期，我们才能找到这个问题。以上。</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>最后贴出小程序官网给的一张请求登陆的流程图。看了这个可以加深对前后端通信的理解。<br><img src="https://mp.weixin.qq.com/debug/wxadoc/dev/image/api-login.jpg?t=2018518" alt="小程序登陆流程时序"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2018/05/22/小程序首页加载白屏？那是你蠢/" data-id="cjjll86vi0002ysw7oilytx3s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-手机连不上电脑？那是你笨" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/手机连不上电脑？那是你笨/" class="article-date">
+  <time datetime="2018-05-20T07:57:05.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/手机连不上电脑？那是你笨/">手机连不上电脑？那是你笨</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="手机连不上电脑？那是你笨"><a href="#手机连不上电脑？那是你笨" class="headerlink" title="手机连不上电脑？那是你笨"></a>手机连不上电脑？那是你笨</h1><p>闲来无事，想试试weex，进入weex官网。看着新奇的用Vue来写app，想起了当年在实验室写app的场景。</p>
+<h2 id="废话"><a href="#废话" class="headerlink" title="废话"></a>废话</h2><p>还好我看的懂weex的官方文档的字，照着官网一步步下来，总算在本地搭建好了开发环境。<br>接下来就是要使用<a href="https://weex.incubator.apache.org/cn/tools/playground.html" target="_blank" rel="noopener">Weex playground app</a>来预览手机应用了。</p>
+<p>接下来就遇到了<strong>手机连不上电脑的问题</strong>，用<code>Weex playground app</code>扫描启动的网页，手机显示连不上该网页，上网搜了一大堆，说是防火墙的问题，机智的我把防火墙关了，但还是没有办法连上。</p>
+<h2 id="我勒个去"><a href="#我勒个去" class="headerlink" title="我勒个去"></a>我勒个去</h2><p>在我即将崩溃的时候，发现启动的IP地址是<code>192.168.79.1</code>。这怎么和我平常看到的本地IP不一样啊，本地的不应该是<code>192.168.0.xxx</code>么？于是我ipconfig了一下，惊奇的发现<code>192.168.79.1</code>旁边写着大大的<strong>VM</strong>，我操，他娘的意大利炮。</p>
+<h2 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h2><p>我用意大利炮把VM的无线适配器给轰掉了，好了，解决了。再次启动的时候就是我亲切的<code>192.168.0.xxx</code>了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="cjjll86vl0004ysw7bnmjg7sl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/19/hello-world/" class="article-date">
+  <time datetime="2018-05-18T17:37:22.716Z" itemprop="datePublished">2018-05-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/19/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2018/05/19/hello-world/" data-id="cjjll86va0000ysw78gc733vn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/双向绑定/" style="font-size: 10px;">双向绑定</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/14/简单的双向绑定/">简单的双向绑定</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/12/代码检查工具eslint，是时候认识它了/">代码检查工具eslint，是时候认识它了</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/23/RCA听过没？这次就能知道了/">RCA听过没？这次就能知道了</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/22/小程序首页加载白屏？那是你蠢/">小程序首页加载白屏？那是你蠢</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/20/手机连不上电脑？那是你笨/">手机连不上电脑？那是你笨</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
       </div>
       <footer id="footer">
-
-        <div class="outer">
-          <div id="footer-info" class="inner">
-            &copy; 2018 Michael Wang
-            <br> Powered by
-            <a href="http://hexo.io/" target="_blank">Hexo</a>
-          </div>
-        </div>
-      </footer>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Michael Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
     </div>
     <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
-      <a href="/" class="mobile-nav-link">Home</a>
-
-      <a href="/archives" class="mobile-nav-link">Archives</a>
-
-    </nav>
-
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-    <script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-    <script src="/js/script.js"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
 
 
 
   </div>
 </body>
-
 </html>

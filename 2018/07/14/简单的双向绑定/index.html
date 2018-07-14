@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>简单的双向绑定 | Michael&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简单的双向绑定主要用的方法就是Object.defineProperties。  The Object.defineProperties() method defines new or modifies existing properties directly on an object, returning the object.  这个方法可以直接添加或修改对象存在的属性值，这些属性值包括:">
+<meta name="keywords" content="双向绑定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单的双向绑定">
+<meta property="og:url" content="http://wangminchao.xyz/2018/07/14/简单的双向绑定/index.html">
+<meta property="og:site_name" content="Michael&#39;s Blog">
+<meta property="og:description" content="简单的双向绑定主要用的方法就是Object.defineProperties。  The Object.defineProperties() method defines new or modifies existing properties directly on an object, returning the object.  这个方法可以直接添加或修改对象存在的属性值，这些属性值包括:">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-14T15:49:44.416Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单的双向绑定">
+<meta name="twitter:description" content="简单的双向绑定主要用的方法就是Object.defineProperties。  The Object.defineProperties() method defines new or modifies existing properties directly on an object, returning the object.  这个方法可以直接添加或修改对象存在的属性值，这些属性值包括:">
+  
+    <link rel="alternate" href="/atom.xml" title="Michael&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Michael&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wangminchao.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-简单的双向绑定" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/14/简单的双向绑定/" class="article-date">
+  <time datetime="2018-07-14T15:25:38.000Z" itemprop="datePublished">2018-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      简单的双向绑定
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简单的双向绑定"><a href="#简单的双向绑定" class="headerlink" title="简单的双向绑定"></a>简单的双向绑定</h1><p>主要用的方法就是<code>Object.defineProperties</code>。</p>
+<blockquote>
+<p>The Object.defineProperties() method defines new or modifies existing properties directly on an object, returning the object.</p>
+</blockquote>
+<p>这个方法可以直接添加或修改对象存在的属性值，这些属性值包括:</p>
+<ul>
+<li><p>configurable</p>
+<p>默认为 <code>false</code></p>
+<p><code>true</code> 当且仅当该属性描述符的类型可以被改变并且该属性可以从对应对象中删除。</p>
+</li>
+<li><p>enumerable</p>
+<p>默认为 <code>false</code></p>
+<p><code>true</code> 当且仅当在枚举相应对象上的属性时该属性显现。</p>
+</li>
+<li><p>value</p>
+<p>默认为 <code>undefined</code></p>
+<p>与属性关联的值。可以是任何有效的<code>JavaScript</code>值（数字，对象，函数等）。</p>
+</li>
+<li><p>writeable</p>
+<p>默认为 <code>false</code></p>
+<p><code>true</code>当且仅当与该属性相关联的值可以用<code>assignment operator</code>改变时。</p>
+</li>
+<li><p>get</p>
+<p>默认为 <code>undefined</code></p>
+<p>作为该属性的 <code>getter</code> 函数，如果没有 <code>getter</code> 则为<code>undefined</code>。函数返回值将被用作属性的值。</p>
+</li>
+<li><p>set</p>
+<p>默认为 <code>undefined</code></p>
+<p>作为属性的 <code>setter</code> 函数，如果没有 <code>setter</code> 则为<code>undefined</code>。函数将仅接受参数赋值给该属性的新值。</p>
+</li>
+</ul>
+<h2 id="主要原理"><a href="#主要原理" class="headerlink" title="主要原理"></a>主要原理</h2><p>就是通过设定对象的get和set属性来实现组件之间的绑定效果。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    input1=&gt;<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"input1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    input2=&gt;<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"input2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    我每次比input1的值加1=&gt;<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"span"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当input1的值改变时触发<code>set</code>属性，input2的<code>set</code>也会执行，带动<code>span</code>内的值的变化。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oInput1 = <span class="built_in">document</span>.getElementById(<span class="string">'input1'</span>);</span><br><span class="line"><span class="keyword">var</span> oInput2 = <span class="built_in">document</span>.getElementById(<span class="string">'input2'</span>);</span><br><span class="line"><span class="keyword">var</span> oSpan = <span class="built_in">document</span>.getElementById(<span class="string">'span'</span>);</span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperties(obj, &#123;</span><br><span class="line">    val1: &#123;</span><br><span class="line">        configurable: <span class="literal">true</span>,</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            oInput1.value = <span class="number">0</span>;</span><br><span class="line">            oInput2.value = <span class="number">0</span>;</span><br><span class="line">            oSpan.innerHTML = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        &#125;,</span><br><span class="line">        set: <span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>) </span>&#123;</span><br><span class="line">            oInput2.value = newValue;</span><br><span class="line">            oSpan.innerHTML = <span class="built_in">Number</span>(newValue) ? <span class="built_in">Number</span>(newValue) : <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    val2: &#123;</span><br><span class="line">        configurable: <span class="literal">true</span>,</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            oInput1.value = <span class="number">0</span>;</span><br><span class="line">            oInput2.value = <span class="number">0</span>;</span><br><span class="line">            oSpan.innerHTML = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        &#125;,</span><br><span class="line">        set: <span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>) </span>&#123;</span><br><span class="line">            oInput1.value = newValue;</span><br><span class="line">            oSpan.innerHTML = <span class="built_in">Number</span>(newValue)+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">oInput1.value = obj.val1;</span><br><span class="line">oInput1.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    obj.val1 = oInput1.value;</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line">oInput2.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    obj.val2 = oInput2.value;</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2018/07/14/简单的双向绑定/" data-id="cjjll86vm0005ysw7qvwj96d4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/12/代码检查工具eslint，是时候认识它了/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">代码检查工具eslint，是时候认识它了</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/双向绑定/" style="font-size: 10px;">双向绑定</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/14/简单的双向绑定/">简单的双向绑定</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/12/代码检查工具eslint，是时候认识它了/">代码检查工具eslint，是时候认识它了</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/23/RCA听过没？这次就能知道了/">RCA听过没？这次就能知道了</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/22/小程序首页加载白屏？那是你蠢/">小程序首页加载白屏？那是你蠢</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/20/手机连不上电脑？那是你笨/">手机连不上电脑？那是你笨</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Michael Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
