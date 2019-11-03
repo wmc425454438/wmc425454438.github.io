@@ -10,16 +10,16 @@
   <meta name="description" content="小程序前端之路（一）——首页加载问题1. 问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 2.原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序首页加载白屏问题分析">
-<meta property="og:url" content="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏？那是你蠢/index.html">
+<meta property="og:url" content="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏/index.html">
 <meta property="og:site_name" content="Michael&#39;s Blog">
 <meta property="og:description" content="小程序前端之路（一）——首页加载问题1. 问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 2.原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://mp.weixin.qq.com/debug/wxadoc/dev/image/api-login.jpg?t=2018518">
-<meta property="og:updated_time" content="2019-11-03T04:58:05.538Z">
+<meta property="og:image" content="http://wangminchao.xyz/2019/11/03/imgs/wxapp-login.jpg">
+<meta property="og:updated_time" content="2019-11-03T05:10:11.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序首页加载白屏问题分析">
 <meta name="twitter:description" content="小程序前端之路（一）——首页加载问题1. 问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 2.原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的">
-<meta name="twitter:image" content="https://mp.weixin.qq.com/debug/wxadoc/dev/image/api-login.jpg?t=2018518">
+<meta name="twitter:image" content="http://wangminchao.xyz/2019/11/03/imgs/wxapp-login.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Michael&#39;s Blog" type="application/atom+xml">
   
@@ -66,9 +66,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-小程序首页加载白屏？那是你蠢" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-小程序首页加载白屏" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/03/小程序首页加载白屏？那是你蠢/" class="article-date">
+    <a href="/2019/11/03/小程序首页加载白屏/" class="article-date">
   <time datetime="2019-11-03T04:58:03.000Z" itemprop="datePublished">2019-11-03</time>
 </a>
     
@@ -95,12 +95,12 @@
 <p>在这里准备好promise之后，我们就可以在我想要在它后面执行的地方进行调用其他方法了，下面是我index.js中调用这个方法的例子。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line"><span class="comment">// promise加载数据</span></span><br><span class="line">getApp().myPromiseFunction().then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里value是我们resolve回来的值</span></span><br><span class="line">    <span class="built_in">console</span>.log(value)</span><br><span class="line">    <span class="comment">// 初始化页面</span></span><br><span class="line">    that.init()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个问题其实挺难复现，如果你前后端都通，这个问题比较容易发现。不然我们需要等待sessionkey过期，我们才能找到这个问题。以上。</p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>最后贴出小程序官网给的一张请求登陆的流程图。看了这个可以加深对前后端通信的理解。<br><img src="https://mp.weixin.qq.com/debug/wxadoc/dev/image/api-login.jpg?t=2018518" alt="小程序登陆流程时序"></p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>最后贴出小程序官网给的一张请求登陆的流程图。看了这个可以加深对前后端通信的理解。<br><img src="../imgs/wxapp-login.jpg" alt="小程序登陆流程时序"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏？那是你蠢/" data-id="ck2iipyip0004gcw71n66n198" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏/" data-id="ck2ijbuwf00002gw7khfrgzo4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -176,7 +176,7 @@
           </li>
         
           <li>
-            <a href="/2019/11/03/小程序首页加载白屏？那是你蠢/">小程序首页加载白屏问题分析</a>
+            <a href="/2019/11/03/小程序首页加载白屏/">小程序首页加载白屏问题分析</a>
           </li>
         
           <li>
