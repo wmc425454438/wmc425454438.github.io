@@ -64,6 +64,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Javascript-Singleton-Patten" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/13/Javascript-Singleton-Patten/" class="article-date">
+  <time datetime="2019-11-13T11:32:10.000Z" itemprop="datePublished">2019-11-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/13/Javascript-Singleton-Patten/">Javascript Singleton Patten</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="introduce"><a href="#introduce" class="headerlink" title="introduce"></a>introduce</h2><p>In case you’re unfamiliar with the singleton pattern, it is, at its core, a design pattern that restricts the instantiation of a class to one object. Usually, the goal is to manage global application state.</p>
+<h2 id="examples"><a href="#examples" class="headerlink" title="examples"></a>examples</h2><h3 id="normal-singleton"><a href="#normal-singleton" class="headerlink" title="normal singleton"></a>normal singleton</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Singleton = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Singleton.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Singleton.getInstance = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> instance = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!instance) &#123;</span><br><span class="line">      <span class="keyword">this</span>.instance = <span class="keyword">new</span> Singleton(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = Singleton.getInstance(<span class="string">"bob1"</span>);</span><br><span class="line"><span class="keyword">var</span> b = Singleton.getInstance(<span class="string">"bob2"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a === b);</span><br></pre></td></tr></table></figure>
+<h3 id="proxy-singleton"><a href="#proxy-singleton" class="headerlink" title="proxy singleton"></a>proxy singleton</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> CreateDiv = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.html = html;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.init();</span></span><br><span class="line"><span class="undefined">      &#125;;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      CreateDiv.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span></span><br><span class="line"><span class="javascript">        div.innerHTML = <span class="keyword">this</span>.html;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.body.appendChild(div);</span></span><br><span class="line"><span class="undefined">      &#125;;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> ProxySingletonCreateDiv = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> instance;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">if</span> (!instance) &#123;</span></span><br><span class="line"><span class="javascript">            instance = <span class="keyword">new</span> CreateDiv(html);</span></span><br><span class="line"><span class="undefined">          &#125;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span> instance;</span></span><br><span class="line"><span class="undefined">        &#125;;</span></span><br><span class="line"><span class="undefined">      &#125;)();</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> a = <span class="keyword">new</span> ProxySingletonCreateDiv(<span class="string">"bob1"</span>);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> b = <span class="keyword">new</span> ProxySingletonCreateDiv(<span class="string">"bob2"</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(a === b);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="lazy-singleton"><a href="#lazy-singleton" class="headerlink" title="lazy singleton"></a>lazy singleton</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lazy singleton in common use</span></span><br><span class="line"><span class="comment">// create the instance only when you use it</span></span><br><span class="line"><span class="comment">// disparate create function and manage singleton function</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> getSingle = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> result || ( result = fn .apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>) );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Singleton = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'Joe'</span>;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> createSingle = getSingle(Singleton);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> e = createSingle();</span><br><span class="line"><span class="keyword">var</span> f = createSingle();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( e === f );</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ck2x9rs180000ecw7v2jm2tf8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Javascript-s-Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/09/Javascript-s-Polymorphism/" class="article-date">
@@ -94,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ck2rdu0g1000030w76vho6vnr" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ck2x9rs1h0002ecw72x39ahnr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -135,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ck2rdu0gc000330w7ydkz0g49" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ck2x9rs1m0004ecw7lvo9vtyg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -179,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ck2rdu0gf000530w7yqqrtcko" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ck2x9rs1v000aecw7iu69adfi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -223,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏/" data-id="ck2rdu0gh000830w7ikcwwmav" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏/" data-id="ck2x9rs1z000eecw735ia8233" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ck2rdu0g7000130w71cq6t0ml" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ck2x9rs1o0005ecw7iup6pv0a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -343,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/07/14/简单的双向绑定/" data-id="ck2rdu0gk000930w7englkmdy" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/07/14/简单的双向绑定/" data-id="ck2x9rs1y000decw74xhr0059" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
@@ -398,7 +440,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="ck2rdu0ge000430w7wo41xpnv" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="ck2x9rs1q0006ecw7utfaooou" class="article-share-link">Share</a>
       
       
     </footer>
@@ -439,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="ck2rdu0gl000a30w7lkl6cl8n" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="ck2x9rs1t0009ecw7eo3u7fed" class="article-share-link">Share</a>
       
       
     </footer>
@@ -494,6 +536,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/13/Javascript-Singleton-Patten/">Javascript Singleton Patten</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/09/Javascript-s-Polymorphism/">Javascript&#39;s Polymorphism</a>
           </li>
         
@@ -507,10 +553,6 @@
         
           <li>
             <a href="/2019/11/03/小程序首页加载白屏/">小程序首页加载白屏问题分析</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/11/PC网站制作的一些注意点/">PC网站制作</a>
           </li>
         
       </ul>
