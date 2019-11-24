@@ -64,6 +64,46 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS-Proxy-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/25/JS-Proxy-Pattern/" class="article-date">
+  <time datetime="2019-11-24T18:38:36.000Z" itemprop="datePublished">2019-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/25/JS-Proxy-Pattern/">JS Proxy Pattern</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="catch-the-girl"><a href="#catch-the-girl" class="headerlink" title="catch the girl"></a>catch the girl</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// normal</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Flower = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Michael = &#123;</span><br><span class="line">    sendFlower: <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> flower = <span class="keyword">new</span> Flower();</span><br><span class="line">        target.receiveFlower(flower);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Girl = &#123;</span><br><span class="line">    receiveFlower: <span class="function"><span class="keyword">function</span>(<span class="params">flower</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'receive flower'</span>, flower)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Michael.sendFlower(Girl)</span><br><span class="line"></span><br><span class="line"><span class="comment">// let friend send the flower</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Flower = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Michael = &#123;</span><br><span class="line">    sendFlower: <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> flower = <span class="keyword">new</span> Flower();</span><br><span class="line">        target.receiveFlower(flower);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Girl = &#123;</span><br><span class="line">    receiveFlower: <span class="function"><span class="keyword">function</span>(<span class="params">flower</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'girl receive flower'</span>, flower)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Friend = &#123;</span><br><span class="line">    receiveFlower: <span class="function"><span class="keyword">function</span>(<span class="params">flower</span>) </span>&#123;</span><br><span class="line">        Girl.receiveFlower(flower)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Michael.sendFlower(Friend)</span><br><span class="line"></span><br><span class="line"><span class="comment">// listen good mood</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Flower = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Michael = &#123;</span><br><span class="line">    sendFlower: <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">        target.receiveFlower();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Girl = &#123;</span><br><span class="line">    receiveFlower: <span class="function"><span class="keyword">function</span>(<span class="params">flower</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'girl receive flower'</span>, flower)</span><br><span class="line">    &#125;,</span><br><span class="line">    listenGoodMood: <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            fn();</span><br><span class="line">        &#125;, <span class="number">3000</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Friend = &#123;</span><br><span class="line">    receiveFlower: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        Girl.listenGoodMood(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> flower = <span class="keyword">new</span> Flower();</span><br><span class="line">            Girl.receiveFlower(flower)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Michael.sendFlower(Friend)</span><br></pre></td></tr></table></figure>
+<h2 id="proxy-cache-in-common-using"><a href="#proxy-cache-in-common-using" class="headerlink" title="proxy cache in common using"></a>proxy cache in common using</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// calculate proxy example</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/********* mult **********/</span></span><br><span class="line"><span class="keyword">var</span> mult = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = <span class="built_in">arguments</span>.length; i &lt; l; i++) &#123;</span><br><span class="line">        a = a * <span class="built_in">arguments</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/********* plus ***********/</span></span><br><span class="line"><span class="keyword">var</span> plus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = <span class="built_in">arguments</span>.length; i &lt; l; i++) &#123;</span><br><span class="line">        a = a + <span class="built_in">arguments</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/****** proxyFactory ******/</span></span><br><span class="line"><span class="keyword">var</span> createProxyFactory = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cache = &#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.join.call( <span class="built_in">arguments</span>, <span class="string">''</span> );</span><br><span class="line">        <span class="keyword">if</span> (args <span class="keyword">in</span> cache) &#123;</span><br><span class="line">            <span class="keyword">return</span> cache[ args ]; <span class="comment">// return calculate result</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cache[ args ] = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> proxyMult = createProxyFactory( mult ),</span><br><span class="line">proxyPlus = createProxyFactory( plus );</span><br><span class="line"><span class="built_in">console</span>.log ( proxyMult( <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> ) ); <span class="comment">// 24</span></span><br><span class="line"><span class="built_in">console</span>.log ( proxyMult( <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> ) ); <span class="comment">// 24</span></span><br><span class="line"><span class="built_in">console</span>.log ( proxyPlus( <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> ) ); <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">console</span>.log ( proxyPlus( <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> ) ); <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2019/11/25/JS-Proxy-Pattern/" data-id="ck3dcltbz0000qkw7a235ayfp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Javascript-Strategy-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/21/Javascript-Strategy-Pattern/" class="article-date">
@@ -109,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ck38pvr0d00035ww78bwalyi6" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ck3dcltcl0003qkw75i57anm4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -151,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ck38pvr0r000c5ww7ojwy8r33" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ck3dcltca0001qkw7vmfwqii1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -193,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ck38pvr0800015ww7ipv86vo0" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ck3dcltcn0004qkw78yfsq7rz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -234,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ck38pvr0200005ww7min94cst" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ck3dcltd8000dqkw7xcdqrscm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -278,7 +318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ck38pvr0l00085ww7j1n0xa7b" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ck3dcltd6000bqkw7w80elbpb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -322,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏/" data-id="ck38pvr0o00095ww71hpw6muo" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏/" data-id="ck3dcltde000hqkw7a3wyop3o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -367,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ck38pvr0f00045ww7l6o02mtq" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ck3dcltd9000eqkw7ufxgu11v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -442,7 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/07/14/简单的双向绑定/" data-id="ck38pvr1i000h5ww7rkuycaq1" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/07/14/简单的双向绑定/" data-id="ck3dcltdj000jqkw73h9brhb7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
@@ -497,48 +537,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="ck38pvr0g00055ww7de1jup4b" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-手机连不上电脑？那是你笨" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/20/手机连不上电脑？那是你笨/" class="article-date">
-  <time datetime="2018-05-20T06:57:05.000Z" itemprop="datePublished">2018-05-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/20/手机连不上电脑？那是你笨/">weex phone cant connet to tcomputer</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>闲来无事，想试试weex，进入weex官网。看着新奇的用Vue来写app，想起了当年在实验室写app的场景。</p>
-<h2 id="仔细"><a href="#仔细" class="headerlink" title="仔细"></a>仔细</h2><p>还好我照着官网一步步下来，总算在本地搭建好了开发环境。<br>接下来就是要使用<a href="https://weex.incubator.apache.org/cn/tools/playground.html" target="_blank" rel="noopener">Weex playground app</a>来预览手机应用了。</p>
-<p>接下来就遇到了<strong>手机连不上电脑的问题</strong>，用<code>Weex playground app</code>扫描启动的网页，手机显示连不上该网页，上网搜了一大堆，说是防火墙的问题，机智的我把防火墙关了，但还是没有办法连上。</p>
-<h2 id="再仔细"><a href="#再仔细" class="headerlink" title="再仔细"></a>再仔细</h2><p>发现启动的IP地址是<code>192.168.79.1</code>。这怎么和我平常看到的本地IP不一样啊，本地的不应该是<code>192.168.0.xxx</code>么？于是我ipconfig了一下，惊奇的发现<code>192.168.79.1</code>旁边写着大大的<strong>VM</strong>。</p>
-<h2 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h2><p>我把VM的无线适配器给干掉了，好了，解决了。再次启动的时候就是我亲切的<code>192.168.0.xxx</code>了。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="ck38pvr1a000f5ww7z2crapsa" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="ck3dcltdb000gqkw7da6b5yya" class="article-share-link">Share</a>
       
       
     </footer>
@@ -549,6 +548,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -593,6 +597,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/25/JS-Proxy-Pattern/">JS Proxy Pattern</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/21/Javascript-Strategy-Pattern/">Javascript Strategy Pattern</a>
           </li>
         
@@ -606,10 +614,6 @@
         
           <li>
             <a href="/2019/11/09/Pub-Sub-Pattern/">Pub-Sub Pattern</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/03/代码检查工具eslint，是时候认识它了/">代码检查工具eslint，是时候认识它了</a>
           </li>
         
       </ul>
