@@ -64,6 +64,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Javascript-Iterator-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/26/Javascript-Iterator-Pattern/" class="article-date">
+  <time datetime="2019-11-25T16:02:53.000Z" itemprop="datePublished">2019-11-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/26/Javascript-Iterator-Pattern/">Javascript Iterator Pattern</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="iterator-in-jquery"><a href="#iterator-in-jquery" class="headerlink" title="iterator in jquery"></a>iterator in jquery</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$.each( [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] , <span class="function"><span class="keyword">function</span>(<span class="params">i, n</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'index = '</span>, i);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'value = '</span>, n);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="implement-a-internal-iterator"><a href="#implement-a-internal-iterator" class="headerlink" title="implement a internal iterator"></a>implement a internal iterator</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> each = <span class="function"><span class="keyword">function</span>(<span class="params">ary, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; ary.length; i++) &#123;</span><br><span class="line">        callback.call(<span class="keyword">this</span>, i, ary[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">each([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="function"><span class="keyword">function</span>(<span class="params">i, v</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'index ==='</span>, i, <span class="string">', value === '</span>,v);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="implement-a-external-iterator"><a href="#implement-a-external-iterator" class="headerlink" title="implement a external iterator"></a>implement a external iterator</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> Iterator = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> current = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> next = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        current += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> isDone = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> current &gt;= obj.length;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> getCurrItem = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> obj [ current ];</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        next: next,</span><br><span class="line">        isDone: isDone,</span><br><span class="line">        getCurrItem: getCurrItem,</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// compare two array is equal</span></span><br><span class="line"><span class="keyword">var</span> compare = <span class="function"><span class="keyword">function</span>(<span class="params">iterator1, iterator2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>( !iterator1.isDone() &amp;&amp; !iterator2.isDone() ) &#123;</span><br><span class="line">        <span class="keyword">if</span>(iterator1.getCurrItem() !== iterator2.getCurrItem()) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'this two arrays is not equal'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        iterator1.next();</span><br><span class="line">        iterator2.next();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'this two arrays is equal'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// iterators</span></span><br><span class="line"><span class="keyword">var</span> iterator1 = Iterator( [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] );</span><br><span class="line"><span class="keyword">var</span> iterator2 = Iterator( [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] );</span><br><span class="line"><span class="keyword">var</span> iterator3 = Iterator( [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>] );</span><br><span class="line"></span><br><span class="line"><span class="comment">// compare</span></span><br><span class="line">compare( iterator1 , iterator2 );</span><br><span class="line">compare( iterator1 , iterator3 );</span><br></pre></td></tr></table></figure>
+<p>The internal iterator is equal to the external iterator, we use them in right situation.<br>Now, it already put in Javascript. We can use it without build it by yourself.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2019/11/26/Javascript-Iterator-Pattern/" data-id="ck3emfcbe0000aww7dm3zs6zv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS-Proxy-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/25/JS-Proxy-Pattern/" class="article-date">
@@ -92,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/25/JS-Proxy-Pattern/" data-id="ck3dcltbz0000qkw7a235ayfp" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/25/JS-Proxy-Pattern/" data-id="ck3emfcbm0002aww7pnygqsul" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -149,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ck3dcltcl0003qkw75i57anm4" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ck3emfcbt0005aww7a08j4m5l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -191,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ck3dcltca0001qkw7vmfwqii1" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ck3emfcbr0004aww7sb0hswbh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -233,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ck3dcltcn0004qkw78yfsq7rz" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ck3emfcbu0006aww73txv9rng" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -274,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ck3dcltd8000dqkw7xcdqrscm" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ck3emfcc1000baww756fn8hwi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -318,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ck3dcltd6000bqkw7w80elbpb" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ck3emfcc4000eaww7x0dhwzix" class="article-share-link">Share</a>
       
       
     </footer>
@@ -362,7 +404,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏/" data-id="ck3dcltde000hqkw7a3wyop3o" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏/" data-id="ck3emfcc6000gaww7xys3b5ex" class="article-share-link">Share</a>
       
       
     </footer>
@@ -407,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ck3dcltd9000eqkw7ufxgu11v" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ck3emfcby0009aww73irgu9f0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -482,64 +524,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/07/14/简单的双向绑定/" data-id="ck3dcltdj000jqkw73h9brhb7" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/07/14/简单的双向绑定/" data-id="ck3emfccd000laww7vglbz5n4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-RCA听过没？这次就能知道了" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/23/RCA听过没？这次就能知道了/" class="article-date">
-  <time datetime="2018-05-22T16:38:01.000Z" itemprop="datePublished">2018-05-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/23/RCA听过没？这次就能知道了/">RCA听过没？这次就能知道了</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Root-cause-analysis"><a href="#Root-cause-analysis" class="headerlink" title="Root cause analysis"></a>Root cause analysis</h1><p>RCA也就是根本原因分析，在今天之前写代码都是认为找到代码的原因就可以皆大欢喜了，到现在才知道。找寻bug产生的和解决的根本方法，或是bug的根本原因才是关键。</p>
-<p>今天大概讲了几个例子，其中有讲到我上一篇的首页加载白屏的问题。我在上一篇的总结中说到，需要发现这个问题需要前后端都通或者是测试中复现，又或者是对通信逻辑熟悉，才能发现这个问题。</p>
-<p>其实可以总结为两点：</p>
-<ol>
-<li>测试用例的不足</li>
-<li>业务逻辑或者是代码逻辑不熟</li>
-</ol>
-<h2 id="测试用例不足"><a href="#测试用例不足" class="headerlink" title="测试用例不足"></a>测试用例不足</h2><p>这个其实可以在我们写完代码，重新测试的时候，去用一个新的身份或者是机器去测试，这样可以浮现很多问题。</p>
-<h2 id="逻辑不熟"><a href="#逻辑不熟" class="headerlink" title="逻辑不熟"></a>逻辑不熟</h2><p>这个只能靠我们自己去熟悉业务或是代码逻辑来弥补，尽量做到熟悉每一行代码，这样在更改代码过程中可以减少衍生bug的出现。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>看问题需要站在几个角度去考虑，身为最基层的码农，需要考虑我为什么会有这样的bug，以后如何规避，如何减少修复后新bug的产生。<br>如果是站在团队角度：</p>
-<ol>
-<li>需要考虑大家出现同类的bug是否可以快速解决，大家是否有一套可以共用的API文档，来解决此类bug</li>
-<li>如何和后端形成良好的沟通，减少前后端通信上的bug</li>
-<li>分享技术网站以及搜索方法，帮助团队快速寻找问题的解决办法。</li>
-<li>增加测试用例，来测试常见案例和边缘案例</li>
-<li>理想状态形成团队成员互相review的机制，稳定提高团队的代码质量</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="ck3dcltdb000gqkw7da6b5yya" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -597,6 +586,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/26/Javascript-Iterator-Pattern/">Javascript Iterator Pattern</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/25/JS-Proxy-Pattern/">JS Proxy Pattern</a>
           </li>
         
@@ -610,10 +603,6 @@
         
           <li>
             <a href="/2019/11/09/Javascript-s-Polymorphism/">Javascript&#39;s Polymorphism</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/09/Pub-Sub-Pattern/">Pub-Sub Pattern</a>
           </li>
         
       </ul>
