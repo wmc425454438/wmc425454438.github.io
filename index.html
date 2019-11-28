@@ -64,6 +64,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Javascript-Template-Mode-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/28/Javascript-Template-Mode-Pattern/" class="article-date">
+  <time datetime="2019-11-27T15:00:00.000Z" itemprop="datePublished">2019-11-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/28/Javascript-Template-Mode-Pattern/">Javascript Template Mode Pattern</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Coffee-or-Tea"><a href="#Coffee-or-Tea" class="headerlink" title="Coffee or Tea"></a>Coffee or Tea</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Coffee</span></span><br><span class="line"><span class="keyword">var</span> Coffee = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.boilWater = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'boil water'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.brewCoffeeGriends = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'brew Coffee Griends'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.addSugarAndMilk = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'add sugar and milk'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.boilWater();</span><br><span class="line">    <span class="keyword">this</span>.brewCoffeeGriends();</span><br><span class="line">    <span class="keyword">this</span>.addSugarAndMilk();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coffee = <span class="keyword">new</span> Coffee();</span><br><span class="line">coffee.init();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Tea</span></span><br><span class="line"><span class="keyword">var</span> Tea = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Tea.prototype.boilWater = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'boil water'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Tea.prototype.steepTeaBag = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'brew Tea Griends'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Tea.prototype.addLemon = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'add lemon'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Tea.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.boilWater();</span><br><span class="line">    <span class="keyword">this</span>.steepTeaBag();</span><br><span class="line">    <span class="keyword">this</span>.addLemon();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> tea = <span class="keyword">new</span> Tea();</span><br><span class="line">tea.init();</span><br></pre></td></tr></table></figure>
+<h2 id="build-a-Beverage-Function"><a href="#build-a-Beverage-Function" class="headerlink" title="build a Beverage Function"></a>build a Beverage Function</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Beverage</span></span><br><span class="line"><span class="keyword">var</span> Beverage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;; <span class="comment">//　のみもの</span></span><br><span class="line"></span><br><span class="line">Beverage.prototype.boilWater = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'boil water'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Beverage.prototype.brew = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;; <span class="comment">// 空の関数、サブクラスでoverridden</span></span><br><span class="line"></span><br><span class="line">Beverage.prototype.addCondiments = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;; <span class="comment">// 空の関数、サブクラスでoverridden</span></span><br><span class="line"></span><br><span class="line">Beverage.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.boilWater();</span><br><span class="line">    <span class="keyword">this</span>.brew();</span><br><span class="line">    <span class="keyword">this</span>.addCondiments();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Coffee = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype = <span class="keyword">new</span> Beverage();</span><br><span class="line"></span><br><span class="line">Coffee.prototype.brew = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'醸造コーヒー'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.addCondiments = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'砂糖と牛乳を入れる'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coffee = <span class="keyword">new</span> Coffee();</span><br><span class="line">coffee.init();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 砂糖と牛乳を加えたくない場合、どう？</span></span><br><span class="line">Beverage.prototype.customerWantCondiments = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Beverage.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.boilWater();</span><br><span class="line">    <span class="keyword">this</span>.brew();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.customerWantCondiments) &#123;</span><br><span class="line">        <span class="keyword">this</span>.addCondiments();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Coffee = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype = <span class="keyword">new</span> Beverage();</span><br><span class="line"></span><br><span class="line">Coffee.prototype.brew = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'醸造コーヒー'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.addCondiments = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'砂糖と牛乳を入れる'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.customerWantCondiments = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">window</span>.confirm( <span class="string">'調味料が必要ですか？'</span> );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coffee = <span class="keyword">new</span> Coffee();</span><br><span class="line">coffee.init();</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript-Template-Mode"><a href="#Javascript-Template-Mode" class="headerlink" title="Javascript Template Mode"></a>Javascript Template Mode</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Beverage = <span class="function"><span class="keyword">function</span>(<span class="params"> param </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> boilWater = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">'boil water'</span> );</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> brew = param.brew || <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>( <span class="string">'brew function 必要'</span> );</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> addCondiments = param.addCondiments || <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>( <span class="string">'addCondiments 必要'</span> );</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    F.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        boilWater();</span><br><span class="line">        brew();</span><br><span class="line">        addCondiments();</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> F;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Coffee = Beverage(&#123;</span><br><span class="line">    brew: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">'醸造コーヒー'</span> );</span><br><span class="line">    &#125;,</span><br><span class="line">    addCondiments: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">'砂糖と牛乳を入れる'</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coffee = <span class="keyword">new</span> Coffee();</span><br><span class="line">coffee.init();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2019/11/28/Javascript-Template-Mode-Pattern/" data-id="ck3ikld0m000460w7cdn8klj6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Javascript-Composite-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/27/Javascript-Composite-Pattern/" class="article-date">
@@ -97,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/27/Javascript-Composite-Pattern/" data-id="ck3g3v8g000009cw7xr9lxscd" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/27/Javascript-Composite-Pattern/" data-id="ck3ikld0b000060w7wj09t8zv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -139,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/26/Javascript-Iterator-Pattern/" data-id="ck3g3v8gg00039cw7911r8m1x" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/26/Javascript-Iterator-Pattern/" data-id="ck3ikld0o000560w7plvof501" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -179,7 +220,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/25/JS-Proxy-Pattern/" data-id="ck3g3v8gb00019cw7h3v7yneq" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/25/JS-Proxy-Pattern/" data-id="ck3ikld0i000260w740w7hwsv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -236,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ck3g3v8gm00059cw70077u2l1" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ck3ikld0s000960w7kcg5q605" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -278,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ck3g3v8gj00049cw78ggr46sa" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ck3ikld0p000660w7n6midsv0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -320,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ck3g3v8gp00089cw7w8n2tpc4" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ck3ikld0u000b60w7m55u737e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -361,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ck3g3v8gz000c9cw7b9qgojz1" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ck3ikld10000g60w7igtlg88x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -405,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ck3g3v8h2000e9cw76zq4b884" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ck3ikld13000i60w79yctuih0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -449,52 +490,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏/" data-id="ck3g3v8h9000j9cw7m1docmu2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-PC网站制作的一些注意点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/11/PC网站制作的一些注意点/" class="article-date">
-  <time datetime="2018-08-10T16:14:25.000Z" itemprop="datePublished">2018-08-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/11/PC网站制作的一些注意点/">PC网站制作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一些注意点"><a href="#一些注意点" class="headerlink" title="一些注意点"></a>一些注意点</h1><h2 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h2><p>html5 提供了一些新的语义化标签header、footer、section，好好利用这些有助于爬虫爬取信息。</p>
-<p>title、meta kewords、meta description这些很重要</p>
-<p>还有就是img中的alt 和 a标签中的title，这些同样有助于爬虫爬取信息。</p>
-<h2 id="JQ"><a href="#JQ" class="headerlink" title="JQ"></a>JQ</h2><p>虽然JQ已经即将进入历史，但也不妨碍我们在页面中使用它。在一些老旧的框架中，它仍然有很大的用武之地。DOM的操作和动画的实现，都可以用它实现。</p>
-<h2 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h2><p>比较好用的前端css框架，可以快速实现自适应的页面布局。方便PC网站的开发。</p>
-<h2 id="Rem"><a href="#Rem" class="headerlink" title="Rem"></a>Rem</h2><p>通过设置html下的font-size来实现自适应的方案，这种方法已经集成在了bootstrap框架中，也可以通过这种方法实现自己的框架。</p>
-<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>这里主要类举php框架和典型的前端框架</p>
-<h3 id="php框架"><a href="#php框架" class="headerlink" title="php框架"></a>php框架</h3><p>数据直接在页面渲染，可以用UI框架进行优化，类似IView、Element这种UI框架。</p>
-<h3 id="前端框架（React、Vue、Angular）"><a href="#前端框架（React、Vue、Angular）" class="headerlink" title="前端框架（React、Vue、Angular）"></a>前端框架（React、Vue、Angular）</h3><p>前后端分离的框架方式，利用接口来进行数据渲染。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ck3g3v8gt00099cw7wia0vu56" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏/" data-id="ck3ikld16000m60w7ev9l399d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -554,6 +550,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/28/Javascript-Template-Mode-Pattern/">Javascript Template Mode Pattern</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/27/Javascript-Composite-Pattern/">Javascript Composite Pattern</a>
           </li>
         
@@ -567,10 +567,6 @@
         
           <li>
             <a href="/2019/11/21/Javascript-Strategy-Pattern/">Javascript Strategy Pattern</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/13/Javascript-Singleton-Patten/">Javascript Singleton Patten</a>
           </li>
         
       </ul>
