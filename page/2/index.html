@@ -64,6 +64,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-小程序首页加载白屏" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/03/小程序首页加载白屏/" class="article-date">
+  <time datetime="2019-11-03T04:58:03.000Z" itemprop="datePublished">2019-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/03/小程序首页加载白屏/">小程序首页加载白屏问题分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="小程序前端之路（一）——首页加载问题"><a href="#小程序前端之路（一）——首页加载问题" class="headerlink" title="小程序前端之路（一）——首页加载问题"></a>小程序前端之路（一）——首页加载问题</h1><h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h2><p>今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。<br>由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。</p>
+<h2 id="2-原因"><a href="#2-原因" class="headerlink" title="2.原因"></a>2.原因</h2><p>利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。<br>当我们请求后台返回登录状态的时候，一般使用的是异步请求，而当我们加载首页数据时，异步请求的登录状态还未返回，所以会导致我们拉取不到后台数据。</p>
+<h2 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h2><p>解决办法是用异步回调的方式，将加载数据执行再获取登录状态之后，我这里使用的是Promise方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里是获取登录状态的promise方法</span></span><br><span class="line">myPromiseFunction: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line">    <span class="comment">// 这里返回promise</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span>&#123;</span><br><span class="line">      wx.login(&#123;</span><br><span class="line">        success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">          util.request(&#123;</span><br><span class="line">            url: <span class="string">'后台的url地址'</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">              code: res.code</span><br><span class="line">            &#125;,</span><br><span class="line">            success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="comment">// 缓存登陆状态</span></span><br><span class="line">              wx.setStorageSync(<span class="string">'res'</span>, res)</span><br><span class="line">              that.globalData.res = res</span><br><span class="line">              <span class="comment">// 可以选择将信息返回进行下一步操作</span></span><br><span class="line">              resolve(res)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>在这里准备好promise之后，我们就可以在我想要在它后面执行的地方进行调用其他方法了，下面是我index.js中调用这个方法的例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line"><span class="comment">// promise加载数据</span></span><br><span class="line">getApp().myPromiseFunction().then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里value是我们resolve回来的值</span></span><br><span class="line">    <span class="built_in">console</span>.log(value)</span><br><span class="line">    <span class="comment">// 初始化页面</span></span><br><span class="line">    that.init()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个问题其实挺难复现，如果你前后端都通，这个问题比较容易发现。不然我们需要等待sessionkey过期，我们才能找到这个问题。以上。</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>最后贴出小程序官网给的一张请求登陆的流程图。看了这个可以加深对前后端通信的理解。<br><img src="../imgs/wxapp-login.jpg" alt="小程序登陆流程时序"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2019/11/03/小程序首页加载白屏/" data-id="ck3ltrdks000o14w70wy8clko" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-PC网站制作的一些注意点" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/11/PC网站制作的一些注意点/" class="article-date">
@@ -99,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ck3ikld0x000e60w7c3p62v2e" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ck3ltrdke000e14w7fi0o0pfa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/07/14/简单的双向绑定/" data-id="ck3ikld19000p60w7fzcvovfc" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/07/14/简单的双向绑定/" data-id="ck3ltrdkv000r14w7l413dhqf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
@@ -229,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="ck3ikld15000k60w7catxatnq" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="ck3ltrdkm000i14w7ju787dm4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -270,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangminchao.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="ck3ikld18000o60w7yi7a3ltl" class="article-share-link">Share</a>
+      <a data-url="http://wangminchao.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="ck3ltrdku000q14w7tbsc32ii" class="article-share-link">Share</a>
       
       
     </footer>
@@ -317,7 +361,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
     </div>
   </div>
 
@@ -328,6 +372,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/12/01/Javascript-Flyweight-Pattern/">Javascript Flyweight Pattern</a>
+          </li>
         
           <li>
             <a href="/2019/11/28/Javascript-Template-Mode-Pattern/">Javascript Template Mode Pattern</a>
@@ -343,10 +391,6 @@
         
           <li>
             <a href="/2019/11/25/JS-Proxy-Pattern/">JS Proxy Pattern</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/21/Javascript-Strategy-Pattern/">Javascript Strategy Pattern</a>
           </li>
         
       </ul>

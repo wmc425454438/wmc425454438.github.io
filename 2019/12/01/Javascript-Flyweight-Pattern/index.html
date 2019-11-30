@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Javascript Flyweight Pattern | Michael&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="フライウェイトモードはパフォーマンスの最適化のためのモードです。ここでいう「フライ」とはハエを意味し、フライ級を意味します。 Flyweightパターンの中核は、共有テクノロジーを使用して、多数の細粒度オブジェクトを効果的にサポートすることです。  first demo12345678910111213var Model = function(sex, underwear) &amp;#123;">
+<meta name="keywords" content="Design Patterns">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript Flyweight Pattern">
+<meta property="og:url" content="http://wangminchao.xyz/2019/12/01/Javascript-Flyweight-Pattern/index.html">
+<meta property="og:site_name" content="Michael&#39;s Blog">
+<meta property="og:description" content="フライウェイトモードはパフォーマンスの最適化のためのモードです。ここでいう「フライ」とはハエを意味し、フライ級を意味します。 Flyweightパターンの中核は、共有テクノロジーを使用して、多数の細粒度オブジェクトを効果的にサポートすることです。  first demo12345678910111213var Model = function(sex, underwear) &amp;#123;">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-11-30T17:03:19.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript Flyweight Pattern">
+<meta name="twitter:description" content="フライウェイトモードはパフォーマンスの最適化のためのモードです。ここでいう「フライ」とはハエを意味し、フライ級を意味します。 Flyweightパターンの中核は、共有テクノロジーを使用して、多数の細粒度オブジェクトを効果的にサポートすることです。  first demo12345678910111213var Model = function(sex, underwear) &amp;#123;">
+  
+    <link rel="alternate" href="/atom.xml" title="Michael&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Michael&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about/me.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wangminchao.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Javascript-Flyweight-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/01/Javascript-Flyweight-Pattern/" class="article-date">
+  <time datetime="2019-11-30T15:00:00.000Z" itemprop="datePublished">2019-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Javascript Flyweight Pattern
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>フライウェイトモードはパフォーマンスの最適化のためのモードです。ここでいう「フライ」とはハエを意味し、フライ級を意味します。 Flyweightパターンの中核は、共有テクノロジーを使用して、多数の細粒度オブジェクトを効果的にサポートすることです。</p>
+</blockquote>
+<h2 id="first-demo"><a href="#first-demo" class="headerlink" title="first demo"></a>first demo</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Model = <span class="function"><span class="keyword">function</span>(<span class="params">sex, underwear</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.sex = sex;</span><br><span class="line">    <span class="keyword">this</span>.underwear = underwear;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Model.prototype.takephoto = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'sex: '</span> +  <span class="keyword">this</span>.sex, <span class="string">'underware: '</span> + <span class="keyword">this</span>.underwear);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">50</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> maleModel = <span class="keyword">new</span> Model(<span class="string">'female'</span>, <span class="string">'underwear'</span> + i );</span><br><span class="line">    maleModel.takephoto();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上記のメソッドは50個の <code>Model</code>オブジェクトを作成しますが、ここでそれほど多くのオブジェクトを作成する必要はありません。 1つのオブジェクトを使用して、異なる下着のシリアル番号を一度に印刷できます。書き直しましょう：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Model = <span class="function"><span class="keyword">function</span>(<span class="params">sex</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.sex = sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Model.prototype.takephoto = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'sex: '</span> +  <span class="keyword">this</span>.sex, <span class="string">'underware: '</span> + <span class="keyword">this</span>.underwear);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> maleModel = <span class="keyword">new</span> Model(<span class="string">'female'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">50</span>; i++) &#123;</span><br><span class="line">    maleModel.underwear = <span class="string">'underwear'</span> + i;</span><br><span class="line">    maleModel.takephoto();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>フライウェイトモードは、パフォーマンスの問題を解決するために生まれたモードであり、ほとんどのモードの誕生の理由とは異なります。存在の中で同様のオブジェクトが多数あるシステムでは、Flyweightは多数のオブジェクトによって引き起こされるパフォーマンスの問題を解決できます。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangminchao.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ck3ltrdjj000014w7z1cf9m0a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/28/Javascript-Template-Mode-Pattern/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Javascript Template Mode Pattern</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Design-Patterns/" style="font-size: 20px;">Design Patterns</a> <a href="/tags/双向绑定/" style="font-size: 10px;">双向绑定</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/01/Javascript-Flyweight-Pattern/">Javascript Flyweight Pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/28/Javascript-Template-Mode-Pattern/">Javascript Template Mode Pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/27/Javascript-Composite-Pattern/">Javascript Composite Pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/Javascript-Iterator-Pattern/">Javascript Iterator Pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/JS-Proxy-Pattern/">JS Proxy Pattern</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Michael Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/me.html" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
