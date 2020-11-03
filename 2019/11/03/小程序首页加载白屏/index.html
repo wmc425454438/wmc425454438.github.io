@@ -7,18 +7,18 @@
   
   <title>小程序首页加载白屏问题分析 | Warming&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="小程序前端之路（一）——首页加载问题1. 问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 2.原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的">
+  <meta name="description" content="小程序前端之路（一）——首页加载问题问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的是异步请求">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序首页加载白屏问题分析">
 <meta property="og:url" content="http://warming90.xyz/2019/11/03/小程序首页加载白屏/index.html">
 <meta property="og:site_name" content="Warming&#39;s Blog">
-<meta property="og:description" content="小程序前端之路（一）——首页加载问题1. 问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 2.原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的">
+<meta property="og:description" content="小程序前端之路（一）——首页加载问题问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的是异步请求">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://warming90.xyz/2019/11/03/imgs/wxapp-login.jpg">
-<meta property="og:updated_time" content="2019-11-03T05:10:59.815Z">
+<meta property="og:updated_time" content="2020-11-03T18:24:54.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序首页加载白屏问题分析">
-<meta name="twitter:description" content="小程序前端之路（一）——首页加载问题1. 问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 2.原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的">
+<meta name="twitter:description" content="小程序前端之路（一）——首页加载问题问题今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。 原因利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。当我们请求后台返回登录状态的时候，一般使用的是异步请求">
 <meta name="twitter:image" content="http://warming90.xyz/2019/11/03/imgs/wxapp-login.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Warming&#39;s Blog" type="application/atom+xml">
@@ -90,19 +90,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="小程序前端之路（一）——首页加载问题"><a href="#小程序前端之路（一）——首页加载问题" class="headerlink" title="小程序前端之路（一）——首页加载问题"></a>小程序前端之路（一）——首页加载问题</h1><h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h2><p>今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。<br>由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。</p>
-<h2 id="2-原因"><a href="#2-原因" class="headerlink" title="2.原因"></a>2.原因</h2><p>利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。<br>当我们请求后台返回登录状态的时候，一般使用的是异步请求，而当我们加载首页数据时，异步请求的登录状态还未返回，所以会导致我们拉取不到后台数据。</p>
-<h2 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h2><p>解决办法是用异步回调的方式，将加载数据执行再获取登录状态之后，我这里使用的是Promise方法。</p>
+        <h2 id="小程序前端之路（一）——首页加载问题"><a href="#小程序前端之路（一）——首页加载问题" class="headerlink" title="小程序前端之路（一）——首页加载问题"></a>小程序前端之路（一）——首页加载问题</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。<br>由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。<br>当我们请求后台返回登录状态的时候，一般使用的是异步请求，而当我们加载首页数据时，异步请求的登录状态还未返回，所以会导致我们拉取不到后台数据。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>解决办法是用异步回调的方式，将加载数据执行再获取登录状态之后，我这里使用的是Promise方法。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里是获取登录状态的promise方法</span></span><br><span class="line">myPromiseFunction: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line">    <span class="comment">// 这里返回promise</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span>&#123;</span><br><span class="line">      wx.login(&#123;</span><br><span class="line">        success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">          util.request(&#123;</span><br><span class="line">            url: <span class="string">'后台的url地址'</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">              code: res.code</span><br><span class="line">            &#125;,</span><br><span class="line">            success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="comment">// 缓存登陆状态</span></span><br><span class="line">              wx.setStorageSync(<span class="string">'res'</span>, res)</span><br><span class="line">              that.globalData.res = res</span><br><span class="line">              <span class="comment">// 可以选择将信息返回进行下一步操作</span></span><br><span class="line">              resolve(res)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>在这里准备好promise之后，我们就可以在我想要在它后面执行的地方进行调用其他方法了，下面是我index.js中调用这个方法的例子。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line"><span class="comment">// promise加载数据</span></span><br><span class="line">getApp().myPromiseFunction().then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里value是我们resolve回来的值</span></span><br><span class="line">    <span class="built_in">console</span>.log(value)</span><br><span class="line">    <span class="comment">// 初始化页面</span></span><br><span class="line">    that.init()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个问题其实挺难复现，如果你前后端都通，这个问题比较容易发现。不然我们需要等待sessionkey过期，我们才能找到这个问题。以上。</p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>最后贴出小程序官网给的一张请求登陆的流程图。看了这个可以加深对前后端通信的理解。<br><img src="../imgs/wxapp-login.jpg" alt="小程序登陆流程时序"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这个问题其实挺难复现，如果你前后端都通，这个问题比较容易发现。不然我们需要等待sessionkey过期，我们才能找到这个问题。以上。</p>
+<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><p>最后贴出小程序官网给的一张请求登陆的流程图。看了这个可以加深对前后端通信的理解。<br><img src="../imgs/wxapp-login.jpg" alt="小程序登陆流程时序"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/03/小程序首页加载白屏/" data-id="ckh2apfas000cekvguh5aho5g" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/03/小程序首页加载白屏/" data-id="ckh2b0umz000dkwvg70p1h290" class="article-share-link">Share</a>
       
       
     </footer>

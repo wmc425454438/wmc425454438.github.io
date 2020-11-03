@@ -86,8 +86,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="ESLINT"><a href="#ESLINT" class="headerlink" title="ESLINT"></a>ESLINT</h1><h2 id="Airbnb代码规范"><a href="#Airbnb代码规范" class="headerlink" title="Airbnb代码规范"></a>Airbnb代码规范</h2><p>Airbnb是一种比较严格的js代码规范，可以用eslint在代码中检查js文件中那些垃圾代码，帮助我们养成更好的书写习惯，也能帮助我们看懂团队其他人的代码。这就可以大大提高我们的码代码的效率了。</p>
-<h2 id="怎么用？"><a href="#怎么用？" class="headerlink" title="怎么用？"></a>怎么用？</h2><p>首先去<a href="http://eslint.cn/" target="_blank" rel="noopener">eslint官网</a>安装<code>eslint</code>。然后用<code>eslint --init</code>初始化代码规范，在里面可以选择<code>airbnb</code>风格。安装完毕之后，我们就可以使用它了。最简单的就是<code>eslint a.js</code>可以检查<code>a.js</code>中的错误代码。</p>
+        <h2 id="Airbnb代码规范"><a href="#Airbnb代码规范" class="headerlink" title="Airbnb代码规范"></a>Airbnb代码规范</h2><p>Airbnb是一种比较严格的js代码规范，可以用eslint在代码中检查js文件中那些垃圾代码，帮助我们养成更好的书写习惯，也能帮助我们看懂团队其他人的代码。这就可以大大提高我们的码代码的效率了。</p>
+<h2 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h2><p>首先去<a href="http://eslint.cn/" target="_blank" rel="noopener">eslint官网</a>安装<code>eslint</code>。然后用<code>eslint --init</code>初始化代码规范，在里面可以选择<code>airbnb</code>风格。安装完毕之后，我们就可以使用它了。最简单的就是<code>eslint a.js</code>可以检查<code>a.js</code>中的错误代码。</p>
 <h2 id="高阶用法"><a href="#高阶用法" class="headerlink" title="高阶用法"></a>高阶用法</h2><p><code>eslint</code>还是要和编辑器结合使用才能发挥它的正真实例，各大主流的编辑器都有它的相关插件。<code>vscode</code>和<code>sublime</code>我都有用，我就简单介绍一下。</p>
 <h3 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h3><p>微软开发的这款代码编辑器还是相当不错的，可以说是<code>windows</code>操作系统上很容易上手的也比较轻量的编辑器。<code>vscode</code>安装<code>eslint插件</code>就可以正常使用了，也提供保存自动<code>--fix</code>的功能，很好很强大。</p>
 <h3 id="sublime"><a href="#sublime" class="headerlink" title="sublime"></a>sublime</h3><p>这个安装<code>ESLINT</code>这个插件也就足够了，就是要自己去<code>setting</code>里面去配置一下。配置完成后，需要检查的时候右键<code>eslint</code>一下，错误提示都会显现。<code>sublime</code>支持自己配置快捷键，<code>--fix</code>可以使用快捷键实现。</p>
@@ -96,7 +96,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ckh2apfar000bekvgm54vekhr" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ckh2b0umw000ckwvgwplk1v04" class="article-share-link">Share</a>
       
       
     </footer>
@@ -128,19 +128,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="小程序前端之路（一）——首页加载问题"><a href="#小程序前端之路（一）——首页加载问题" class="headerlink" title="小程序前端之路（一）——首页加载问题"></a>小程序前端之路（一）——首页加载问题</h1><h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h2><p>今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。<br>由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。</p>
-<h2 id="2-原因"><a href="#2-原因" class="headerlink" title="2.原因"></a>2.原因</h2><p>利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。<br>当我们请求后台返回登录状态的时候，一般使用的是异步请求，而当我们加载首页数据时，异步请求的登录状态还未返回，所以会导致我们拉取不到后台数据。</p>
-<h2 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h2><p>解决办法是用异步回调的方式，将加载数据执行再获取登录状态之后，我这里使用的是Promise方法。</p>
+        <h2 id="小程序前端之路（一）——首页加载问题"><a href="#小程序前端之路（一）——首页加载问题" class="headerlink" title="小程序前端之路（一）——首页加载问题"></a>小程序前端之路（一）——首页加载问题</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>今天碰到首页加载空白的问题，主要是跟后台交互的时候，sessionkey过期的问题。<br>由于后台的保护机制，sessionkey过期不能拉取后台数据，解决办法是重新登录一次。</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>利用wx.login重新获取code传给后台，获取登录状态，用新的登录状态去拉取后台数据。在这里我犯了一个错误，主要是异步的问题。<br>当我们请求后台返回登录状态的时候，一般使用的是异步请求，而当我们加载首页数据时，异步请求的登录状态还未返回，所以会导致我们拉取不到后台数据。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>解决办法是用异步回调的方式，将加载数据执行再获取登录状态之后，我这里使用的是Promise方法。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里是获取登录状态的promise方法</span></span><br><span class="line">myPromiseFunction: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line">    <span class="comment">// 这里返回promise</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span>&#123;</span><br><span class="line">      wx.login(&#123;</span><br><span class="line">        success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">          util.request(&#123;</span><br><span class="line">            url: <span class="string">'后台的url地址'</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">              code: res.code</span><br><span class="line">            &#125;,</span><br><span class="line">            success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="comment">// 缓存登陆状态</span></span><br><span class="line">              wx.setStorageSync(<span class="string">'res'</span>, res)</span><br><span class="line">              that.globalData.res = res</span><br><span class="line">              <span class="comment">// 可以选择将信息返回进行下一步操作</span></span><br><span class="line">              resolve(res)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>在这里准备好promise之后，我们就可以在我想要在它后面执行的地方进行调用其他方法了，下面是我index.js中调用这个方法的例子。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line"><span class="comment">// promise加载数据</span></span><br><span class="line">getApp().myPromiseFunction().then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里value是我们resolve回来的值</span></span><br><span class="line">    <span class="built_in">console</span>.log(value)</span><br><span class="line">    <span class="comment">// 初始化页面</span></span><br><span class="line">    that.init()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个问题其实挺难复现，如果你前后端都通，这个问题比较容易发现。不然我们需要等待sessionkey过期，我们才能找到这个问题。以上。</p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>最后贴出小程序官网给的一张请求登陆的流程图。看了这个可以加深对前后端通信的理解。<br><img src="../imgs/wxapp-login.jpg" alt="小程序登陆流程时序"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这个问题其实挺难复现，如果你前后端都通，这个问题比较容易发现。不然我们需要等待sessionkey过期，我们才能找到这个问题。以上。</p>
+<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><p>最后贴出小程序官网给的一张请求登陆的流程图。看了这个可以加深对前后端通信的理解。<br><img src="../imgs/wxapp-login.jpg" alt="小程序登陆流程时序"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/03/小程序首页加载白屏/" data-id="ckh2apfas000cekvguh5aho5g" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/03/小程序首页加载白屏/" data-id="ckh2b0umz000dkwvg70p1h290" class="article-share-link">Share</a>
       
       
     </footer>
@@ -172,7 +172,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一些注意点"><a href="#一些注意点" class="headerlink" title="一些注意点"></a>一些注意点</h1><h2 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h2><p>html5 提供了一些新的语义化标签header、footer、section，好好利用这些有助于爬虫爬取信息。</p>
+        <h2 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h2><p>html5 提供了一些新的语义化标签header、footer、section，好好利用这些有助于爬虫爬取信息。</p>
 <p>title、meta kewords、meta description这些很重要</p>
 <p>还有就是img中的alt 和 a标签中的title，这些同样有助于爬虫爬取信息。</p>
 <h2 id="JQ"><a href="#JQ" class="headerlink" title="JQ"></a>JQ</h2><p>虽然JQ已经即将进入历史，但也不妨碍我们在页面中使用它。在一些老旧的框架中，它仍然有很大的用武之地。DOM的操作和动画的实现，都可以用它实现。</p>
@@ -185,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ckh2apfal0008ekvgjn3pn031" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ckh2b0umr0009kwvglewfkryo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +209,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/14/简单的双向绑定/">一些小知识-绑定和委托</a>
+      <a class="article-title" href="/2018/07/14/简单的双向绑定/">绑定和委托</a>
     </h1>
   
 
@@ -217,7 +217,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一些小知识"><a href="#一些小知识" class="headerlink" title="一些小知识"></a>一些小知识</h1><h2 id="简单的双向绑定"><a href="#简单的双向绑定" class="headerlink" title="简单的双向绑定"></a>简单的双向绑定</h2><p>主要用的方法就是<code>Object.defineProperties</code>。</p>
+        <h2 id="简单的双向绑定"><a href="#简单的双向绑定" class="headerlink" title="简单的双向绑定"></a>简单的双向绑定</h2><p>主要用的方法就是<code>Object.defineProperties</code>。</p>
 <blockquote>
 <p>The Object.defineProperties() method defines new or modifies existing properties directly on an object, returning the object.</p>
 </blockquote>
@@ -260,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2018/07/14/简单的双向绑定/" data-id="ckh2apfay000fekvgww51rc3i" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2018/07/14/简单的双向绑定/" data-id="ckh2b0un1000fkwvgwbk3spqr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
@@ -294,16 +294,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Root-cause-analysis"><a href="#Root-cause-analysis" class="headerlink" title="Root cause analysis"></a>Root cause analysis</h1><p>RCA也就是根本原因分析，在今天之前写代码都是认为找到代码的原因就可以皆大欢喜了，到现在才知道。找寻bug产生的和解决的根本方法，或是bug的根本原因才是关键。</p>
+        <h2 id="Root-cause-analysis"><a href="#Root-cause-analysis" class="headerlink" title="Root cause analysis"></a>Root cause analysis</h2><p>RCA也就是根本原因分析，在今天之前写代码都是认为找到代码的原因就可以皆大欢喜了，到现在才知道。找寻bug产生的和解决的根本方法，或是bug的根本原因才是关键。</p>
 <p>今天大概讲了几个例子，其中有讲到我上一篇的首页加载白屏的问题。我在上一篇的总结中说到，需要发现这个问题需要前后端都通或者是测试中复现，又或者是对通信逻辑熟悉，才能发现这个问题。</p>
 <p>其实可以总结为两点：</p>
 <ol>
 <li>测试用例的不足</li>
 <li>业务逻辑或者是代码逻辑不熟</li>
 </ol>
-<h2 id="测试用例不足"><a href="#测试用例不足" class="headerlink" title="测试用例不足"></a>测试用例不足</h2><p>这个其实可以在我们写完代码，重新测试的时候，去用一个新的身份或者是机器去测试，这样可以浮现很多问题。</p>
-<h2 id="逻辑不熟"><a href="#逻辑不熟" class="headerlink" title="逻辑不熟"></a>逻辑不熟</h2><p>这个只能靠我们自己去熟悉业务或是代码逻辑来弥补，尽量做到熟悉每一行代码，这样在更改代码过程中可以减少衍生bug的出现。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>看问题需要站在几个角度去考虑，身为最基层的码农，需要考虑我为什么会有这样的bug，以后如何规避，如何减少修复后新bug的产生。<br>如果是站在团队角度：</p>
+<h3 id="测试用例不足"><a href="#测试用例不足" class="headerlink" title="测试用例不足"></a>测试用例不足</h3><p>这个其实可以在我们写完代码，重新测试的时候，去用一个新的身份或者是机器去测试，这样可以浮现很多问题。</p>
+<h3 id="逻辑不熟"><a href="#逻辑不熟" class="headerlink" title="逻辑不熟"></a>逻辑不熟</h3><p>这个只能靠我们自己去熟悉业务或是代码逻辑来弥补，尽量做到熟悉每一行代码，这样在更改代码过程中可以减少衍生bug的出现。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>看问题需要站在几个角度去考虑，身为最基层的码农，需要考虑我为什么会有这样的bug，以后如何规避，如何减少修复后新bug的产生。<br>如果是站在团队角度：</p>
 <ol>
 <li>需要考虑大家出现同类的bug是否可以快速解决，大家是否有一套可以共用的API文档，来解决此类bug</li>
 <li>如何和后端形成良好的沟通，减少前后端通信上的bug</li>
@@ -315,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="ckh2apfao000aekvg1vemukyj" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="ckh2b0umv000bkwvgigiaeaet" class="article-share-link">Share</a>
       
       
     </footer>
@@ -356,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="ckh2apfau000dekvgxcdmh6fl" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="ckh2b0un0000ekwvgsm9oy6yy" class="article-share-link">Share</a>
       
       
     </footer>
