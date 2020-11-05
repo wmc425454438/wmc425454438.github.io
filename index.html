@@ -86,11 +86,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2>
+        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>  动态规划英文 <em>Dynamic Programming</em>，是求解决策过程最优化的数学方法，后来沿用到了编程领域。<br>  动态规划的大致思路是把一个复杂的问题转化成一个分阶段逐步递推的过程，从简单的初始状态一步一步递推，最终得到复杂问题的最优解。<br>  动态规划解决问题的过程分为两步：</p>
+<ol>
+<li>寻找<strong>状态转移方程</strong></li>
+<li>利用状态转移方程式<strong>自底向上</strong>求解问题</li>
+</ol>
+<h2 id="爬楼梯问题"><a href="#爬楼梯问题" class="headerlink" title="爬楼梯问题"></a>爬楼梯问题</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">climbingWays</span>(<span class="params">n</span>) </span>&#123; <span class="comment">// 爬到n阶楼梯的方法个数</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 假设楼梯一次只能爬一级或者两级</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(n &lt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 由于爬楼梯阶层只需要前两级阶层的个数，只需保存两个数就可以</span></span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">var</span> temp = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">3</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">    temp = a + b;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/06/Programming）/" data-id="ckh57p6fk0006ogvgbsfosqaj" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/06/Programming）/" data-id="ckh58mmxa0009s0vgnmbvyd66" class="article-share-link">Share</a>
       
       
     </footer>
@@ -133,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ckh57p6f80001ogvgeu9deozi" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ckh58mmww0001s0vg3frmgzvp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -175,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/28/Javascript-Template-Mode-Pattern/" data-id="ckh57p6gb000aogvgami8hz4l" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/28/Javascript-Template-Mode-Pattern/" data-id="ckh58mmx50006s0vgi8xkvvd6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -220,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/27/Javascript-Composite-Pattern/" data-id="ckh57p6fa0002ogvg8aq42aae" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/27/Javascript-Composite-Pattern/" data-id="ckh58mmwy0002s0vgtwhsckmu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -262,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/26/Javascript-Iterator-Pattern/" data-id="ckh57p6fc0003ogvglsnvkupq" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/26/Javascript-Iterator-Pattern/" data-id="ckh58mmx00003s0vg07c5oumw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -302,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/25/JS-Proxy-Pattern/" data-id="ckh57p6f00000ogvg8htlxzm2" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/25/JS-Proxy-Pattern/" data-id="ckh58mmwq0000s0vgo5br5msb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -359,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ckh57p6g30008ogvgq3rowu54" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ckh58mmx30005s0vgdknjlqy5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -401,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ckh57p6fi0005ogvgp0fbxil0" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ckh58mmx10004s0vgekgwz6th" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -443,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ckh57p6hm000gogvg1c8z0131" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ckh58mmx70007s0vgl6ymoshz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -484,7 +490,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ckh57p6hr000iogvgq3yoxar5" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ckh58mmxd000as0vgf7ylzl8t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
