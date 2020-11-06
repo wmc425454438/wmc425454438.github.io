@@ -91,7 +91,7 @@
 <li>寻找<strong>状态转移方程</strong></li>
 <li>利用状态转移方程式<strong>自底向上</strong>求解问题</li>
 </ol>
-<h2 id="爬楼梯问题"><a href="#爬楼梯问题" class="headerlink" title="爬楼梯问题"></a>爬楼梯问题</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">climbingWays</span>(<span class="params">n</span>) </span>&#123; <span class="comment">// 爬到n阶楼梯的方法个数</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 假设楼梯一次只能爬一级或者两级</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(n &lt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 由于爬楼梯阶层只需要前两级阶层的个数，只需保存两个数就可以</span></span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">var</span> temp = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">3</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">    temp = a + b;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="爬楼梯问题"><a href="#爬楼梯问题" class="headerlink" title="爬楼梯问题"></a>爬楼梯问题</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(N)，空间复杂度O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">climbingWays</span>(<span class="params">n</span>) </span>&#123; <span class="comment">// 爬到n阶楼梯的方法个数</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 假设楼梯一次只能爬一级或者两级</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(n &lt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 由于爬楼梯阶层只需要前两级阶层的个数，只需保存两个数就可以</span></span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">var</span> temp = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">3</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">    temp = a + b;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="挖金矿问题"><a href="#挖金矿问题" class="headerlink" title="挖金矿问题"></a>挖金矿问题</h3><p>假设有<code>n</code>个金矿，<code>w</code>个工人，每座金矿需要的工人和金矿量分别用<code>p[]</code>和<code>g[]</code>来表示。<br>问：所有工人挖去金矿的最大值。</p>
 <p>由于最后一座金矿有两种情况：挖或者不挖。</p>
 <ul>
@@ -115,11 +115,12 @@
 <li>f(n, w) = max(f(n-1, w), f(n-1, w - p[n-1]) + g[n-1]) (n &gt; 1, w &gt;= p[n-1])  工人充足的情况</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMostGold</span>(<span class="params">num, workers, gold, person</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> preResult = [];</span><br><span class="line">  <span class="keyword">var</span> result = [];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 先判断边界条件</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= num; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(i &lt; person[<span class="number">0</span>]) &#123;</span><br><span class="line">        preResult[i] = <span class="number">0</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        preResult[i] = gold[<span class="number">0</span>];</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 从第二行开始，按照前一行的数据进行计算</span></span><br><span class="line">  <span class="comment">// i代表第i座金矿，j代表当前工人个数</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; num; i++) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt;= workers; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(j &lt; person[i]) &#123;</span><br><span class="line">        result[j] = preResult[j];</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        result[j] = <span class="built_in">Math</span>.max(preResult[j], preResult[j-person[i]]+gold[i])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 把当前的值传给上一层，继续遍历</span></span><br><span class="line">    preResult = result;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result[num]; <span class="comment">// 最后返回最大值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><em>工人数较大时，需要开辟的空间单位会变大，这时使用递归反而会变得简单</em></strong></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/06/Programming）/" data-id="ckh6qtrdl000a7ovgteg2in11" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/06/Programming）/" data-id="ckh6rafx9000au0vgnj264gsx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -162,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ckh6qtrd800037ovg3kw5u79g" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ckh6rafwv0003u0vgl4nsteaq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -204,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/28/Javascript-Template-Mode-Pattern/" data-id="ckh6qtrdg00077ovgrtjvzttl" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/28/Javascript-Template-Mode-Pattern/" data-id="ckh6rafx20007u0vgyos8s42l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -249,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/27/Javascript-Composite-Pattern/" data-id="ckh6qtrd600027ovgop6tchom" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/27/Javascript-Composite-Pattern/" data-id="ckh6rafwt0002u0vg7pdiq92v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -291,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/26/Javascript-Iterator-Pattern/" data-id="ckh6qtrda00047ovgsfm3ac4n" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/26/Javascript-Iterator-Pattern/" data-id="ckh6rafwx0004u0vg05cgaxuj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -331,7 +332,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/25/JS-Proxy-Pattern/" data-id="ckh6qtrcz00017ovgsxweaul9" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/25/JS-Proxy-Pattern/" data-id="ckh6rafwn0001u0vgys0e846g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -388,7 +389,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ckh6qtrdd00067ovg59rfibwn" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ckh6rafx10006u0vg38tg32jy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -430,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ckh6qtrdb00057ovgqk2ffom0" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ckh6rafwy0005u0vg7x79pgsk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -472,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ckh6qtrdh00087ovgj4epzaz3" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ckh6rafx40008u0vgrb6w8nk5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -513,7 +514,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ckh6qtrdo000b7ovgh6dq6ep8" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ckh6rafxb000bu0vg0gahnprr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
