@@ -64,6 +64,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-函数柯里化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/09/函数柯里化/" class="article-date">
+  <time datetime="2020-11-08T18:18:18.000Z" itemprop="datePublished">2020-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/09/函数柯里化/">函数柯里化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <meta name="referrer" content="no-referrer">
+
+<h2 id="函数柯里化（currying）"><a href="#函数柯里化（currying）" class="headerlink" title="函数柯里化（currying）"></a>函数柯里化（currying）</h2><blockquote>
+<p>首先说一下为什么叫柯里化，完全是因为这个技术由 Christopher Strachey 以逻辑学家 Haskell Curry 命名的。所以不必在意为什么叫这个名字，我们也可以记谐音颗粒化（将参数一个一个的传入）。<br>这个就是把接收多个参数的方法变换成接收单一参数的函数，并且返回接收剩余参数的一个新函数。</p>
+</blockquote>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>先来看一个简单的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">multiply(<span class="number">2</span>, <span class="number">5</span>); <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<p>上面这个函数的主要作用就是将两个函数相乘。<br>接下来我们让这个函数变成只接受一个参数的函数，并且可以保存之前传入的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry_multiply</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">y</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> x * y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> multiply2 = curry_multiply(<span class="number">2</span>);</span><br><span class="line">multiply2(<span class="number">5</span>); <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> multiply5 = curry_multiply(<span class="number">5</span>);</span><br><span class="line">multiply5(<span class="number">2</span>); <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<p>了解过闭包的就应该能看懂上面的函数，返回了一个新的函数，并且保存了x变量的值。这就使得我们传入<code>curry_multiply</code>的值可以保留下来，方便我们针对不同情况的调用。</p>
+<p>下面介绍一个通用柯里化的函数，此函数只是一个简化版本，在实际应用中需要判断其他情况。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span>(<span class="params">fn, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...arg</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> fn(...args, ...arg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">volumn</span>(<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x*y*z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> test2 = curry(volumn, <span class="number">2</span>);</span><br><span class="line"><span class="keyword">let</span> test10 = curry(test2, <span class="number">5</span>);</span><br><span class="line">test10(<span class="number">10</span>); <span class="comment">// 100</span></span><br></pre></td></tr></table></figure>
+<p><code>curry</code>函数的主要作用是将传入的第一个参数作为函数进行调用，将第二个参数作为<code>fn</code>的参数传入，并将剩余参数传入。这样我们可以简单的复用同一个函数的不同参数情况。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://warming90.xyz/2020/11/09/函数柯里化/" data-id="ckh9fz63c000d3gvgw91r0bfs" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-宏观和微观任务" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/09/宏观和微观任务/" class="article-date">
@@ -117,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="ckh9fqkuz000edcvgmafvo88i" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="ckh9fz63h000f3gvgyqw52mgm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/08/最长公共子串/" data-id="ckh9fqkv3000hdcvg876sptvs" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/08/最长公共子串/" data-id="ckh9fz63l000i3gvgjxmspmkx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
@@ -221,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/06/动态规划/" data-id="ckh9fqkuu000cdcvgxrlrob2a" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/06/动态规划/" data-id="ckh9fz63e000e3gvgt5sgrgog" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
@@ -266,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ckh9fqkub0002dcvgwmd30nc3" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ckh9fz62w00033gvg03api4t5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -308,7 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/28/Javascript-Template-Mode-Pattern/" data-id="ckh9fqkuk0007dcvgi22ye676" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/28/Javascript-Template-Mode-Pattern/" data-id="ckh9fz63200073gvgd0npn37d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -353,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/27/Javascript-Composite-Pattern/" data-id="ckh9fqkue0003dcvggpb05vym" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/27/Javascript-Composite-Pattern/" data-id="ckh9fz62u00023gvggso10bau" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -395,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/26/Javascript-Iterator-Pattern/" data-id="ckh9fqkug0004dcvgvttktzsz" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/26/Javascript-Iterator-Pattern/" data-id="ckh9fz63100063gvgozv203qt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -435,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/25/JS-Proxy-Pattern/" data-id="ckh9fqku20000dcvgf0dy04po" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/25/JS-Proxy-Pattern/" data-id="ckh9fz62p00013gvgz0nh4srn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -492,49 +541,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ckh9fqkuh0005dcvgme94j5j2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Javascript-Singleton-Patten" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/13/Javascript-Singleton-Patten/" class="article-date">
-  <time datetime="2019-11-13T12:32:10.000Z" itemprop="datePublished">2019-11-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/13/Javascript-Singleton-Patten/">Javascript Singleton Patten</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="introduce"><a href="#introduce" class="headerlink" title="introduce"></a>introduce</h2><p>In case you’re unfamiliar with the singleton pattern, it is, at its core, a design pattern that restricts the instantiation of a class to one object. Usually, the goal is to manage global application state.</p>
-<h2 id="examples"><a href="#examples" class="headerlink" title="examples"></a>examples</h2><h3 id="normal-singleton"><a href="#normal-singleton" class="headerlink" title="normal singleton"></a>normal singleton</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Singleton = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Singleton.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Singleton.getInstance = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> instance = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!instance) &#123;</span><br><span class="line">      <span class="keyword">this</span>.instance = <span class="keyword">new</span> Singleton(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = Singleton.getInstance(<span class="string">"bob1"</span>);</span><br><span class="line"><span class="keyword">var</span> b = Singleton.getInstance(<span class="string">"bob2"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a === b);</span><br></pre></td></tr></table></figure>
-<h3 id="proxy-singleton"><a href="#proxy-singleton" class="headerlink" title="proxy singleton"></a>proxy singleton</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> CreateDiv = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.html = html;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.init();</span></span><br><span class="line"><span class="undefined">      &#125;;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      CreateDiv.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span></span><br><span class="line"><span class="javascript">        div.innerHTML = <span class="keyword">this</span>.html;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.body.appendChild(div);</span></span><br><span class="line"><span class="undefined">      &#125;;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> ProxySingletonCreateDiv = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> instance;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">if</span> (!instance) &#123;</span></span><br><span class="line"><span class="javascript">            instance = <span class="keyword">new</span> CreateDiv(html);</span></span><br><span class="line"><span class="undefined">          &#125;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span> instance;</span></span><br><span class="line"><span class="undefined">        &#125;;</span></span><br><span class="line"><span class="undefined">      &#125;)();</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> a = <span class="keyword">new</span> ProxySingletonCreateDiv(<span class="string">"bob1"</span>);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> b = <span class="keyword">new</span> ProxySingletonCreateDiv(<span class="string">"bob2"</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(a === b);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="lazy-singleton"><a href="#lazy-singleton" class="headerlink" title="lazy singleton"></a>lazy singleton</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="comment">// lazy singleton in common use</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// create the instance only when you use it</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// disparate create function and manage singleton function</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> getSingle = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> result;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span> result || (result = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>));</span></span><br><span class="line"><span class="undefined">        &#125;;</span></span><br><span class="line"><span class="undefined">      &#125;;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> CreateLoginLayer = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span></span><br><span class="line"><span class="javascript">        div.innerHTML = <span class="string">"loginLayer"</span>;</span></span><br><span class="line"><span class="javascript">        div.style.display = <span class="string">"none"</span>;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.body.appendChild(div);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> div;</span></span><br><span class="line"><span class="undefined">      &#125;;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> createSingleLoginLayer = getSingle(CreateLoginLayer);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> a = CreateLoginLayer();</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> b = CreateLoginLayer();</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> e = createSingleLoginLayer();</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> f = createSingleLoginLayer();</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(a === b);</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(e === f);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ckh9fqkuj0006dcvg5zi0ci6y" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ckh9fz62z00053gvgd3zrgzf3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -596,6 +603,10 @@
       <ul>
         
           <li>
+            <a href="/2020/11/09/函数柯里化/">函数柯里化</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/09/宏观和微观任务/">宏观和微观任务</a>
           </li>
         
@@ -609,10 +620,6 @@
         
           <li>
             <a href="/2019/12/01/Javascript-Flyweight-Pattern/">Javascript Flyweight Pattern</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/28/Javascript-Template-Mode-Pattern/">Javascript Template Mode Pattern</a>
           </li>
         
       </ul>
