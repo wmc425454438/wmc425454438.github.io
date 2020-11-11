@@ -64,6 +64,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Javascript-Strategy-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/21/Javascript-Strategy-Pattern/" class="article-date">
+  <time datetime="2019-11-21T13:53:05.000Z" itemprop="datePublished">2019-11-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/21/Javascript-Strategy-Pattern/">Javascript Strategy Pattern</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Strategy-Pattern"><a href="#Strategy-Pattern" class="headerlink" title="Strategy Pattern"></a>Strategy Pattern</h2><blockquote>
+<p>Define a series of algorithms, wrap them one by one, and make them interchangeable</p>
+</blockquote>
+<ul>
+<li>calculate Bonus</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> calculateBonus = <span class="function"><span class="keyword">function</span>(<span class="params">performanceLevel, salary</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(performanceLevel === <span class="string">'S'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> salary * <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(performanceLevel === <span class="string">'A'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> salary * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(performanceLevel === <span class="string">'B'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> salary * <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> salary * <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">calculateBonus(<span class="string">'B'</span>, <span class="number">20000</span>); <span class="comment">// 40000</span></span><br><span class="line">calculateBonus(<span class="string">'S'</span>, <span class="number">6000</span>); <span class="comment">// 24000</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>disadvantages</p>
+<ul>
+<li>this function contains many <code>if-else</code></li>
+<li>if we want to add level ‘C’ in this function, we have to rewrite this function. It’s betray the open-closed principle</li>
+</ul>
+</li>
+<li><p>improve with combined function</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// separate the calculation function from this function</span></span><br><span class="line"><span class="keyword">var</span> performanceS = <span class="function"><span class="keyword">function</span>(<span class="params"> salary </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> salary * <span class="number">4</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> performanceA = <span class="function"><span class="keyword">function</span>(<span class="params"> salary </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> salary * <span class="number">3</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> performanceB = <span class="function"><span class="keyword">function</span>(<span class="params"> salary </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> salary * <span class="number">2</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> performanceDefault = <span class="function"><span class="keyword">function</span>(<span class="params"> salary </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> salary * <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> calculateBonus = <span class="function"><span class="keyword">function</span>(<span class="params">performanceLevel, salary</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(performanceLevel === <span class="string">'S'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> performanceS(salary);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(performanceLevel === <span class="string">'A'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> performanceA(salary);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(performanceLevel === <span class="string">'B'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> performanceB(salary);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> performanceDefault(salary);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">calculateBonus(<span class="string">'B'</span>, <span class="number">20000</span>); <span class="comment">// 40000</span></span><br><span class="line">calculateBonus(<span class="string">'S'</span>, <span class="number">6000</span>); <span class="comment">// 24000</span></span><br></pre></td></tr></table></figure>
+<h3 id="strategy-pattern-in-Javascript"><a href="#strategy-pattern-in-Javascript" class="headerlink" title="strategy pattern in Javascript"></a>strategy pattern in Javascript</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> strategies = &#123;</span><br><span class="line">    <span class="string">'S'</span>: <span class="function"><span class="keyword">function</span>(<span class="params"> salary </span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> salary * <span class="number">4</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'A'</span>: <span class="function"><span class="keyword">function</span>(<span class="params"> salary </span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> salary * <span class="number">3</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'B'</span>: <span class="function"><span class="keyword">function</span>(<span class="params"> salary </span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> salary * <span class="number">2</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> calculateBonus = <span class="function"><span class="keyword">function</span>(<span class="params">level, salary</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> strategies[ level ](salary);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">calculateBonus(<span class="string">'B'</span>, <span class="number">20000</span>); <span class="comment">// 40000</span></span><br><span class="line">calculateBonus(<span class="string">'S'</span>, <span class="number">6000</span>); <span class="comment">// 24000</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://warming90.xyz/2019/11/21/Javascript-Strategy-Pattern/" data-id="ckhduf2ck00032gvgmiv1wukt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Javascript-Singleton-Patten" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/13/Javascript-Singleton-Patten/" class="article-date">
@@ -94,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ckhb5014x00055wvg6hu6f7sr" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/13/Javascript-Singleton-Patten/" data-id="ckhduf2cr00082gvg11vqi8he" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -136,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ckhb5015500085wvgph0z1ccm" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/09/Javascript-s-Polymorphism/" data-id="ckhduf2cp00062gvgisgv6cnp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -177,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ckhb5015b000a5wvgl9k9jcdi" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/09/Pub-Sub-Pattern/" data-id="ckhduf2cx000b2gvg81l8t2d0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -221,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ckhb5015k000c5wvgphxrkw58" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/03/代码检查工具eslint，是时候认识它了/" data-id="ckhduf2d8000f2gvggxagc9kt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/03/小程序首页加载白屏/" data-id="ckhb5015w000g5wvgb2dj5jer" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/03/小程序首页加载白屏/" data-id="ckhduf2dd000i2gvgk8990ebv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -310,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ckhb5015800095wvgo6z87kdc" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2018/08/11/PC网站制作的一些注意点/" data-id="ckhduf2cs00092gvgb7cfqfzj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -385,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2018/07/14/简单的双向绑定/" data-id="ckhb5015y000i5wvgnmcd8ahx" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2018/07/14/简单的双向绑定/" data-id="ckhduf2dc000h2gvggtwcskc8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
@@ -440,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="ckhb5015g000b5wvg5gcvu2g0" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2018/05/23/RCA听过没？这次就能知道了/" data-id="ckhduf2cz000c2gvgpbast0zw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -481,7 +538,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="ckhb5015x000h5wvgub8k5wcm" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2018/05/20/手机连不上电脑？那是你笨/" data-id="ckhduf2de000j2gvg5jl61o0z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -541,6 +598,10 @@
       <ul>
         
           <li>
+            <a href="/2020/11/12/手写Promise/">手写Promise</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/09/函数柯里化/">函数柯里化</a>
           </li>
         
@@ -554,10 +615,6 @@
         
           <li>
             <a href="/2020/11/06/动态规划/">动态规划</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/01/Javascript-Flyweight-Pattern/">Javascript Flyweight Pattern</a>
           </li>
         
       </ul>
