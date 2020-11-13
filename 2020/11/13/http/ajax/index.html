@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives: 2018/7 | Warming&#39;s Blog</title>
+  <title>ajax | Warming&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Warming&#39;s Blog">
-<meta property="og:url" content="http://warming90.xyz/archives/2018/07/index.html">
+  <meta name="description" content="手写ajax 简化版  1234567891011121314function ajax(method, url, data, suc, fail) &amp;#123;  var xhr = new XMLHttpRequest();  xhr.open(method, url, true);  xhr.onreadystatechange = function()&amp;#123;    if(xhr.re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax">
+<meta property="og:url" content="http://warming90.xyz/2020/11/13/http/ajax/index.html">
 <meta property="og:site_name" content="Warming&#39;s Blog">
+<meta property="og:description" content="手写ajax 简化版  1234567891011121314function ajax(method, url, data, suc, fail) &amp;#123;  var xhr = new XMLHttpRequest();  xhr.open(method, url, true);  xhr.onreadystatechange = function()&amp;#123;    if(xhr.re">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2020-11-13T15:30:37.312Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Warming&#39;s Blog">
+<meta name="twitter:title" content="ajax">
+<meta name="twitter:description" content="手写ajax 简化版  1234567891011121314function ajax(method, url, data, suc, fail) &amp;#123;  var xhr = new XMLHttpRequest();  xhr.open(method, url, true);  xhr.onreadystatechange = function()&amp;#123;    if(xhr.re">
   
     <link rel="alternate" href="/atom.xml" title="Warming&#39;s Blog" type="application/atom+xml">
   
@@ -62,40 +66,55 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/14/简单的双向绑定/" class="archive-article-date">
-  <time datetime="2018-07-14T15:25:38.000Z" itemprop="datePublished">7月 14</time>
+        <section id="main"><article id="post-http/ajax" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/13/http/ajax/" class="article-date">
+  <time datetime="2020-11-13T15:23:13.000Z" itemprop="datePublished">2020-11-13</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/14/简单的双向绑定/">绑定和委托</a>
+    <h1 class="article-title" itemprop="name">
+      ajax
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="手写ajax"><a href="#手写ajax" class="headerlink" title="手写ajax"></a>手写ajax</h2><ul>
+<li>简化版</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method, url, data, suc, fail</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  xhr.open(method, url, <span class="literal">true</span>);</span><br><span class="line">  xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState = <span class="number">4</span>)&#123;</span><br><span class="line">      <span class="keyword">if</span>(xhr.status = <span class="number">200</span>) &#123;</span><br><span class="line">        suc(xhr.responseText);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fail(xhr.responseText);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  xhr.send(data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://warming90.xyz/2020/11/13/http/ajax/" data-id="ckhgfgtmh000wfwvgfgz46tcu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/12/http/手写Promise/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">手写Promise</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
