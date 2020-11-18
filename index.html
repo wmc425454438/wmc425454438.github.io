@@ -64,6 +64,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-面试/判断括号" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/19/面试/判断括号/" class="article-date">
+  <time datetime="2020-11-18T17:45:14.000Z" itemprop="datePublished">2020-11-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/19/面试/判断括号/">判断括号</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>判断由”()[]{}”6种括号组成的字符串是否合法</p>
+<ol>
+<li>所有括号必须闭合</li>
+<li>左括号必须在正确的位置闭合</li>
+</ol>
+</li>
+<li><p>主要思想是利用栈推入左半边括号，然后判断右半边括号是否在字符串剩余部分出现。</p>
+</li>
+<li><code>Map</code>可以很好的解决括号判断的问题，不用自己去判断。</li>
+<li><code>Map</code>可以自定义键值，<code>Object</code>的键值只可以是<code>String</code>和<code>Symbol</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">IsValid</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> str = string;</span><br><span class="line">  <span class="keyword">let</span> map = &#123;</span><br><span class="line">    <span class="string">'('</span>: <span class="number">-1</span>,</span><br><span class="line">    <span class="string">')'</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">'['</span>: <span class="number">-2</span>,</span><br><span class="line">    <span class="string">']'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'&#123;'</span>: <span class="number">-3</span>,</span><br><span class="line">    <span class="string">'&#125;'</span>: <span class="number">3</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> stack = [];</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> temp = str.charAt(i);</span><br><span class="line">    <span class="keyword">let</span> stackLen = stack.length;</span><br><span class="line">    <span class="keyword">if</span>(map[temp] &lt; <span class="number">0</span>) &#123; <span class="comment">// 只有左括号和左右括号都有</span></span><br><span class="line">      stack.push(temp); <span class="comment">// 推入括号</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(stackLen &gt; <span class="number">0</span> &amp;&amp; (map[stackLen - <span class="number">1</span>] !== -map[temp])) &#123;</span><br><span class="line">      stack.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(map[temp]) &#123; <span class="comment">// 只有右括号和没有括号</span></span><br><span class="line">      sum += map[temp];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(stack.length === <span class="number">0</span> &amp;&amp; sum === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://warming90.xyz/2020/11/19/面试/判断括号/" data-id="ckhnrl62k0012psvgpe5fca79" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-面试" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/13/面试/" class="article-date">
@@ -88,12 +137,18 @@
       
         <meta name="referrer" content="no-referrer">
 
-<h2 id="Vue相关"><a href="#Vue相关" class="headerlink" title="Vue相关"></a>Vue相关</h2><details><br>  <summary>vue中组件的data为什么是一个函数</summary><br>  <pre><code>  返回的函数保证组件复用的时候修改的数据都是单独的，每次都会创建一个新的对象来保存当前组件的值。</code></pre><br></details>
+<h2 id="Vue相关"><a href="#Vue相关" class="headerlink" title="Vue相关"></a>Vue相关</h2><ul>
+<li><p>vue中组件的data为什么是一个函数</p>
+<ul>
+<li>返回的函数保证组件复用的时候修改的数据都是单独的，每次都会创建一个新的对象来保存当前组件的值。</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/13/面试/" data-id="ckhgfuh2l000jwkvgpkjmlu42" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/13/面试/" data-id="ckhnrl60n000hpsvgstgpkzbw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -133,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/13/http/ajax/" data-id="ckhgfuh5a000ywkvge8gsgvm6" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/13/http/ajax/" data-id="ckhnrl62g000ypsvg673cgf8q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/12/http/手写Promise/" data-id="ckhgfuh5c0010wkvgbkfqz95w" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/12/http/手写Promise/" data-id="ckhnrl62i0010psvgz6ln7ndu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/函数柯里化/" data-id="ckhgfuh1z000dwkvgj1a26e5a" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/函数柯里化/" data-id="ckhnrl60e000cpsvgbdq2ticc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -282,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="ckhgfuh28000fwkvg8xrdg686" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="ckhnrl60k000fpsvgngtrboas" class="article-share-link">Share</a>
       
       
     </footer>
@@ -320,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/08/dp/最长公共子序列/" data-id="ckhgfuh56000wwkvgpj91wp9u" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/08/dp/最长公共子序列/" data-id="ckhnrl62f000wpsvgoj6wbtsu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
@@ -388,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/06/动态规划/" data-id="ckhgfuh24000ewkvg520qcy2b" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/06/动态规划/" data-id="ckhnrl60m000gpsvg8spmdmfl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
@@ -433,7 +488,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ckhgfuh0f0003wkvg48wohkeo" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ckhnrl5zv0002psvgq26holj7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -475,52 +530,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/28/Javascript-Template-Mode-Pattern/" data-id="ckhgfuh0x0007wkvgsy8fx055" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Javascript-Composite-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/27/Javascript-Composite-Pattern/" class="article-date">
-  <time datetime="2019-11-26T16:00:00.000Z" itemprop="datePublished">2019-11-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/27/Javascript-Composite-Pattern/">Javascript Composite Pattern</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Suppose we want to verify that all the data of a form meets our expectations, we need to give<br>All form items are set for validation. When all verifications pass, proceed to the next step.<br>The demo code is given below:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nameField = &#123;</span><br><span class="line">    name: <span class="string">'nameField'</span>,</span><br><span class="line">    validata: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'validata '</span>, <span class="keyword">this</span>.name, <span class="string">' result'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> idCard = &#123;</span><br><span class="line">    name: <span class="string">'idCard'</span>,</span><br><span class="line">    validata: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'validata '</span>, <span class="keyword">this</span>.name, <span class="string">' result'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> email = &#123;</span><br><span class="line">    name: <span class="string">'email'</span>,</span><br><span class="line">    validata: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'validata '</span>, <span class="keyword">this</span>.name, <span class="string">' result'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> phone = &#123;</span><br><span class="line">    name: <span class="string">'phone'</span>,</span><br><span class="line">    validata: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'validata '</span>, <span class="keyword">this</span>.name, <span class="string">' result'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>In normal, we will use the <code>&amp;&amp;</code> to determine whether all verifications have passed.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// normal</span></span><br><span class="line"><span class="keyword">if</span>(nameField.validata() &amp;&amp; idCard.validata() &amp;&amp; email.validata() &amp;&amp; phone.validata()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'all ok'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>composite pattern code as follows</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// composite</span></span><br><span class="line">form.validata = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    forEach( fields, <span class="function"><span class="keyword">function</span>(<span class="params"> index, field </span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( field.validata() === <span class="literal">false</span>  )&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>The composite pattern is more intuitive, and the same types of functions are named with the same names.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/27/Javascript-Composite-Pattern/" data-id="ckhgfuh0b0002wkvgx99n825h" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/11/28/Javascript-Template-Mode-Pattern/" data-id="ckhnrl6020006psvgvqhpatk8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -582,6 +592,10 @@
       <ul>
         
           <li>
+            <a href="/2020/11/19/面试/判断括号/">判断括号</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/13/面试/">面试</a>
           </li>
         
@@ -595,10 +609,6 @@
         
           <li>
             <a href="/2020/11/09/函数柯里化/">函数柯里化</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/09/宏观和微观任务/">宏观和微观任务</a>
           </li>
         
       </ul>
