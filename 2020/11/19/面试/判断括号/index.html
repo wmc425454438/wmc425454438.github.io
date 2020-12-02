@@ -7,17 +7,17 @@
   
   <title>判断括号 | Warming&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="判断由”()[]{}”6种括号组成的字符串是否合法  所有括号必须闭合 左括号必须在正确的位置闭合   主要思想是利用栈推入左半边括号，然后判断右半边括号是否在字符串剩余部分出现。  Map可以很好的解决括号判断的问题，不用自己去判断。 Map可以自定义键值，Object的键值只可以是String和Symbol  12345678910111213141516171819202122232425">
+  <meta name="description" content="判断由”()[]{}”6种括号组成的字符串是否合法  所有括号必须闭合 左括号必须在正确的位置闭合   主要思想是利用栈推入左半边括号，然后判断右半边括号是否在字符串剩余部分出现。  用键值对的方式去判断是否包含左右括号。  123456789101112131415161718192021222324252627282930313233function IsValid(string) &amp;#12">
 <meta property="og:type" content="article">
 <meta property="og:title" content="判断括号">
 <meta property="og:url" content="http://warming90.xyz/2020/11/19/面试/判断括号/index.html">
 <meta property="og:site_name" content="Warming&#39;s Blog">
-<meta property="og:description" content="判断由”()[]{}”6种括号组成的字符串是否合法  所有括号必须闭合 左括号必须在正确的位置闭合   主要思想是利用栈推入左半边括号，然后判断右半边括号是否在字符串剩余部分出现。  Map可以很好的解决括号判断的问题，不用自己去判断。 Map可以自定义键值，Object的键值只可以是String和Symbol  12345678910111213141516171819202122232425">
+<meta property="og:description" content="判断由”()[]{}”6种括号组成的字符串是否合法  所有括号必须闭合 左括号必须在正确的位置闭合   主要思想是利用栈推入左半边括号，然后判断右半边括号是否在字符串剩余部分出现。  用键值对的方式去判断是否包含左右括号。  123456789101112131415161718192021222324252627282930313233function IsValid(string) &amp;#12">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2020-11-18T18:51:43.130Z">
+<meta property="og:updated_time" content="2020-11-24T09:26:17.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="判断括号">
-<meta name="twitter:description" content="判断由”()[]{}”6种括号组成的字符串是否合法  所有括号必须闭合 左括号必须在正确的位置闭合   主要思想是利用栈推入左半边括号，然后判断右半边括号是否在字符串剩余部分出现。  Map可以很好的解决括号判断的问题，不用自己去判断。 Map可以自定义键值，Object的键值只可以是String和Symbol  12345678910111213141516171819202122232425">
+<meta name="twitter:description" content="判断由”()[]{}”6种括号组成的字符串是否合法  所有括号必须闭合 左括号必须在正确的位置闭合   主要思想是利用栈推入左半边括号，然后判断右半边括号是否在字符串剩余部分出现。  用键值对的方式去判断是否包含左右括号。  123456789101112131415161718192021222324252627282930313233function IsValid(string) &amp;#12">
   
     <link rel="alternate" href="/atom.xml" title="Warming&#39;s Blog" type="application/atom+xml">
   
@@ -97,15 +97,14 @@
 </li>
 <li><p>主要思想是利用栈推入左半边括号，然后判断右半边括号是否在字符串剩余部分出现。</p>
 </li>
-<li><code>Map</code>可以很好的解决括号判断的问题，不用自己去判断。</li>
-<li><code>Map</code>可以自定义键值，<code>Object</code>的键值只可以是<code>String</code>和<code>Symbol</code></li>
+<li>用键值对的方式去判断是否包含左右括号。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">IsValid</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> str = string;</span><br><span class="line">  <span class="keyword">let</span> map = &#123;</span><br><span class="line">    <span class="string">'('</span>: <span class="number">-1</span>,</span><br><span class="line">    <span class="string">')'</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">'['</span>: <span class="number">-2</span>,</span><br><span class="line">    <span class="string">']'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'&#123;'</span>: <span class="number">-3</span>,</span><br><span class="line">    <span class="string">'&#125;'</span>: <span class="number">3</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> stack = [];</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> temp = str.charAt(i);</span><br><span class="line">    <span class="keyword">let</span> stackLen = stack.length;</span><br><span class="line">    <span class="keyword">if</span>(map[temp] &lt; <span class="number">0</span>) &#123; <span class="comment">// 只有左括号和左右括号都有</span></span><br><span class="line">      stack.push(temp); <span class="comment">// 推入括号</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(stackLen &gt; <span class="number">0</span> &amp;&amp; (map[stackLen - <span class="number">1</span>] !== -map[temp])) &#123;</span><br><span class="line">      stack.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(map[temp]) &#123; <span class="comment">// 只有右括号和没有括号</span></span><br><span class="line">      sum += map[temp];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(stack.length === <span class="number">0</span> &amp;&amp; sum === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/19/面试/判断括号/" data-id="ckhnrl62k0012psvgpe5fca79" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/19/面试/判断括号/" data-id="cki6s1q9c0013nwvg7109cf09" class="article-share-link">Share</a>
       
       
     </footer>
@@ -113,6 +112,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/12/02/打家劫舍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          打家劫舍
+        
+      </div>
+    </a>
   
   
     <a href="/2020/11/13/面试/" id="article-nav-older" class="article-nav-link-wrap">
@@ -155,7 +163,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
     </div>
   </div>
 
@@ -166,6 +174,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/12/02/打家劫舍/">打家劫舍</a>
+          </li>
         
           <li>
             <a href="/2020/11/19/面试/判断括号/">判断括号</a>
@@ -181,10 +193,6 @@
         
           <li>
             <a href="/2020/11/12/http/手写Promise/">手写Promise</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/09/函数柯里化/">函数柯里化</a>
           </li>
         
       </ul>

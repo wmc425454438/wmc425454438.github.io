@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>打家劫舍 | Warming&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题描述小偷进行偷窃，不能偷窃相邻的两个房间，不然会触发报警，请问怎样才能窃取到最大的金额。 金额数字用数组表示 1[1, 2, 3, 1]  动态规划的又一道基础题，先分析问题子结构，再列公式。   要首先看一个问题能不能由他的子问题进行解决  可以：能用动态规划；不可以：不能用动态规划解决。   假设一共有n个房间，求偷n个房间的最大值  最后一个房间只有偷和不偷两种方式  偷：f(n) =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="打家劫舍">
+<meta property="og:url" content="http://warming90.xyz/2020/12/02/打家劫舍/index.html">
+<meta property="og:site_name" content="Warming&#39;s Blog">
+<meta property="og:description" content="问题描述小偷进行偷窃，不能偷窃相邻的两个房间，不然会触发报警，请问怎样才能窃取到最大的金额。 金额数字用数组表示 1[1, 2, 3, 1]  动态规划的又一道基础题，先分析问题子结构，再列公式。   要首先看一个问题能不能由他的子问题进行解决  可以：能用动态规划；不可以：不能用动态规划解决。   假设一共有n个房间，求偷n个房间的最大值  最后一个房间只有偷和不偷两种方式  偷：f(n) =">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2020-12-02T02:14:10.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="打家劫舍">
+<meta name="twitter:description" content="问题描述小偷进行偷窃，不能偷窃相邻的两个房间，不然会触发报警，请问怎样才能窃取到最大的金额。 金额数字用数组表示 1[1, 2, 3, 1]  动态规划的又一道基础题，先分析问题子结构，再列公式。   要首先看一个问题能不能由他的子问题进行解决  可以：能用动态规划；不可以：不能用动态规划解决。   假设一共有n个房间，求偷n个房间的最大值  最后一个房间只有偷和不偷两种方式  偷：f(n) =">
+  
+    <link rel="alternate" href="/atom.xml" title="Warming&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Warming&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about/me.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://warming90.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-打家劫舍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/02/打家劫舍/" class="article-date">
+  <time datetime="2020-12-02T01:02:48.000Z" itemprop="datePublished">2020-12-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      打家劫舍
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>小偷进行偷窃，不能偷窃相邻的两个房间，不然会触发报警，请问怎样才能窃取到最大的金额。</p>
+<p>金额数字用数组表示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3, 1]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>动态规划的又一道基础题，先分析问题子结构，再列公式。</p>
+</blockquote>
+<ul>
+<li><p>要首先看一个问题能不能由他的子问题进行解决</p>
+<ul>
+<li>可以：能用动态规划；不可以：不能用动态规划解决。</li>
+</ul>
+</li>
+<li><p>假设一共有n个房间，求偷n个房间的最大值</p>
+</li>
+<li><p>最后一个房间只有偷和不偷两种方式</p>
+<ul>
+<li>偷：f(n) = f(n-2) + n</li>
+<li>不偷: f(n) = f(n-1)</li>
+</ul>
+</li>
+<li><p>所以，n个房间的最大值</p>
+<ul>
+<li>f(n) = max(f(n-2) + n, f(n-1))</li>
+</ul>
+</li>
+<li><p>基本思想如上所述，该问题可以由动态规划算法完成。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> rob = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">0</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">2</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> dp = []; <span class="comment">// 用数组来记录每到k个房间的最大值</span></span><br><span class="line">  dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">  dp[<span class="number">1</span>] = nums[<span class="number">0</span>];</span><br><span class="line">  dp[<span class="number">2</span>] = <span class="built_in">Math</span>.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>])</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">3</span>; i &lt;= len; i++) &#123;</span><br><span class="line">    dp[i] = <span class="built_in">Math</span>.max(dp[i<span class="number">-1</span>], dp[i<span class="number">-2</span>] + nums[i<span class="number">-1</span>]); <span class="comment">// 用刚才推算出来的算法来进行计算</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> dp[len]; <span class="comment">//返回最后的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>仔细观察可以发现，算到n个房间只需要n-1和n-2的最大值就可以了，也就是我们只需要保存前面两个情况的最大值。</p>
+<p>就可以算出n个房间的最大值，所以我们只需要利用变量重复赋值就可以了，不需要用到数组。</p>
+<p>这样我们的空间复杂度就由O(N)变成了O(1)。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> rob = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">0</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">2</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// temp记录每次到i的结果</span></span><br><span class="line">  <span class="keyword">let</span> temp;</span><br><span class="line">  <span class="comment">// 利用prev2记录i-2的最大值，prev1记录i-1的最大值。</span></span><br><span class="line">  <span class="keyword">let</span> prev2 = nums[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">let</span> prev1 = <span class="built_in">Math</span>.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>])</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">3</span>; i &lt;= len; i++) &#123;</span><br><span class="line">    temp = <span class="built_in">Math</span>.max(prev1, prev2 + nums[i<span class="number">-1</span>]);</span><br><span class="line">    prev2 = prev1;</span><br><span class="line">    prev1 = temp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://warming90.xyz/2020/12/02/打家劫舍/" data-id="cki6s1q7k000enwvgnpriu7lv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/19/面试/判断括号/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">判断括号</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Design-Patterns/" style="font-size: 20px;">Design Patterns</a> <a href="/tags/动态规划/" style="font-size: 15px;">动态规划</a> <a href="/tags/双向绑定/" style="font-size: 10px;">双向绑定</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/12/02/打家劫舍/">打家劫舍</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/19/面试/判断括号/">判断括号</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/13/面试/">面试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/13/http/ajax/">ajax</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/12/http/手写Promise/">手写Promise</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Warming<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/me.html" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -64,6 +64,75 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-打家劫舍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/02/打家劫舍/" class="article-date">
+  <time datetime="2020-12-02T01:02:48.000Z" itemprop="datePublished">2020-12-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/02/打家劫舍/">打家劫舍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>小偷进行偷窃，不能偷窃相邻的两个房间，不然会触发报警，请问怎样才能窃取到最大的金额。</p>
+<p>金额数字用数组表示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3, 1]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>动态规划的又一道基础题，先分析问题子结构，再列公式。</p>
+</blockquote>
+<ul>
+<li><p>要首先看一个问题能不能由他的子问题进行解决</p>
+<ul>
+<li>可以：能用动态规划；不可以：不能用动态规划解决。</li>
+</ul>
+</li>
+<li><p>假设一共有n个房间，求偷n个房间的最大值</p>
+</li>
+<li><p>最后一个房间只有偷和不偷两种方式</p>
+<ul>
+<li>偷：f(n) = f(n-2) + n</li>
+<li>不偷: f(n) = f(n-1)</li>
+</ul>
+</li>
+<li><p>所以，n个房间的最大值</p>
+<ul>
+<li>f(n) = max(f(n-2) + n, f(n-1))</li>
+</ul>
+</li>
+<li><p>基本思想如上所述，该问题可以由动态规划算法完成。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> rob = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">0</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">2</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> dp = []; <span class="comment">// 用数组来记录每到k个房间的最大值</span></span><br><span class="line">  dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">  dp[<span class="number">1</span>] = nums[<span class="number">0</span>];</span><br><span class="line">  dp[<span class="number">2</span>] = <span class="built_in">Math</span>.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>])</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">3</span>; i &lt;= len; i++) &#123;</span><br><span class="line">    dp[i] = <span class="built_in">Math</span>.max(dp[i<span class="number">-1</span>], dp[i<span class="number">-2</span>] + nums[i<span class="number">-1</span>]); <span class="comment">// 用刚才推算出来的算法来进行计算</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> dp[len]; <span class="comment">//返回最后的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>仔细观察可以发现，算到n个房间只需要n-1和n-2的最大值就可以了，也就是我们只需要保存前面两个情况的最大值。</p>
+<p>就可以算出n个房间的最大值，所以我们只需要利用变量重复赋值就可以了，不需要用到数组。</p>
+<p>这样我们的空间复杂度就由O(N)变成了O(1)。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> rob = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">0</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(len === <span class="number">2</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// temp记录每次到i的结果</span></span><br><span class="line">  <span class="keyword">let</span> temp;</span><br><span class="line">  <span class="comment">// 利用prev2记录i-2的最大值，prev1记录i-1的最大值。</span></span><br><span class="line">  <span class="keyword">let</span> prev2 = nums[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">let</span> prev1 = <span class="built_in">Math</span>.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>])</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">3</span>; i &lt;= len; i++) &#123;</span><br><span class="line">    temp = <span class="built_in">Math</span>.max(prev1, prev2 + nums[i<span class="number">-1</span>]);</span><br><span class="line">    prev2 = prev1;</span><br><span class="line">    prev1 = temp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://warming90.xyz/2020/12/02/打家劫舍/" data-id="cki6s1q7k000enwvgnpriu7lv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-面试/判断括号" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/19/面试/判断括号/" class="article-date">
@@ -95,15 +164,14 @@
 </li>
 <li><p>主要思想是利用栈推入左半边括号，然后判断右半边括号是否在字符串剩余部分出现。</p>
 </li>
-<li><code>Map</code>可以很好的解决括号判断的问题，不用自己去判断。</li>
-<li><code>Map</code>可以自定义键值，<code>Object</code>的键值只可以是<code>String</code>和<code>Symbol</code></li>
+<li>用键值对的方式去判断是否包含左右括号。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">IsValid</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> str = string;</span><br><span class="line">  <span class="keyword">let</span> map = &#123;</span><br><span class="line">    <span class="string">'('</span>: <span class="number">-1</span>,</span><br><span class="line">    <span class="string">')'</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">'['</span>: <span class="number">-2</span>,</span><br><span class="line">    <span class="string">']'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'&#123;'</span>: <span class="number">-3</span>,</span><br><span class="line">    <span class="string">'&#125;'</span>: <span class="number">3</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> stack = [];</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> temp = str.charAt(i);</span><br><span class="line">    <span class="keyword">let</span> stackLen = stack.length;</span><br><span class="line">    <span class="keyword">if</span>(map[temp] &lt; <span class="number">0</span>) &#123; <span class="comment">// 只有左括号和左右括号都有</span></span><br><span class="line">      stack.push(temp); <span class="comment">// 推入括号</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(stackLen &gt; <span class="number">0</span> &amp;&amp; (map[stackLen - <span class="number">1</span>] !== -map[temp])) &#123;</span><br><span class="line">      stack.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(map[temp]) &#123; <span class="comment">// 只有右括号和没有括号</span></span><br><span class="line">      sum += map[temp];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(stack.length === <span class="number">0</span> &amp;&amp; sum === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/19/面试/判断括号/" data-id="ckhnrl62k0012psvgpe5fca79" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/19/面试/判断括号/" data-id="cki6s1q9c0013nwvg7109cf09" class="article-share-link">Share</a>
       
       
     </footer>
@@ -148,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/13/面试/" data-id="ckhnrl60n000hpsvgstgpkzbw" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/13/面试/" data-id="cki6s1q7o000inwvgo4i0m8ke" class="article-share-link">Share</a>
       
       
     </footer>
@@ -188,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/13/http/ajax/" data-id="ckhnrl62g000ypsvg673cgf8q" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/13/http/ajax/" data-id="cki6s1q9b0011nwvg9gfk57ng" class="article-share-link">Share</a>
       
       
     </footer>
@@ -225,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/12/http/手写Promise/" data-id="ckhnrl62i0010psvgz6ln7ndu" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/12/http/手写Promise/" data-id="cki6s1q97000xnwvglj1y00jq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -274,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/函数柯里化/" data-id="ckhnrl60e000cpsvgbdq2ticc" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/函数柯里化/" data-id="cki6s1q7l000fnwvgphvtbm4m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -337,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="ckhnrl60k000fpsvgngtrboas" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="cki6s1q7m000gnwvgexfs4kau" class="article-share-link">Share</a>
       
       
     </footer>
@@ -375,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/08/dp/最长公共子序列/" data-id="ckhnrl62f000wpsvgoj6wbtsu" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/08/dp/最长公共子序列/" data-id="cki6s1q98000znwvgbl6ut55c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
@@ -414,7 +482,7 @@
 <li>寻找<strong>状态转移方程</strong></li>
 <li>利用状态转移方程式<strong>自底向上</strong>求解问题</li>
 </ol>
-<h2 id="爬楼梯问题"><a href="#爬楼梯问题" class="headerlink" title="爬楼梯问题"></a>爬楼梯问题</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(N)，空间复杂度O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">climbingWays</span>(<span class="params">n</span>) </span>&#123; <span class="comment">// 爬到n阶楼梯的方法个数</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 假设楼梯一次只能爬一级或者两级</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(n &lt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 由于爬楼梯阶层只需要前两级阶层的个数，只需保存两个数就可以</span></span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">var</span> temp = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">3</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">    temp = a + b;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="爬楼梯问题"><a href="#爬楼梯问题" class="headerlink" title="爬楼梯问题"></a>爬楼梯问题</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(N)，空间复杂度O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">climbingWays</span>(<span class="params">n</span>) </span>&#123; <span class="comment">// 爬到n阶楼梯的方法个数</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 假设楼梯一次只能爬一级或者两级</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(n &lt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 由于爬楼梯阶层只需要前两级阶层的个数，只需保存两个数就可以</span></span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">var</span> temp = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    temp = a + b;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="挖金矿问题"><a href="#挖金矿问题" class="headerlink" title="挖金矿问题"></a>挖金矿问题</h3><p>假设有<code>n</code>个金矿，<code>w</code>个工人，每座金矿需要的工人和金矿量分别用<code>p[]</code>和<code>g[]</code>来表示。<br>问：所有工人挖去金矿的最大值。</p>
 <p>由于最后一座金矿有两种情况：挖或者不挖。</p>
 <ul>
@@ -443,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/06/动态规划/" data-id="ckhnrl60m000gpsvg8spmdmfl" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/06/动态规划/" data-id="cki6s1q7d000bnwvgbwxk85z6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
@@ -488,49 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ckhnrl5zv0002psvgq26holj7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Javascript-Template-Mode-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/28/Javascript-Template-Mode-Pattern/" class="article-date">
-  <time datetime="2019-11-27T16:00:00.000Z" itemprop="datePublished">2019-11-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/28/Javascript-Template-Mode-Pattern/">Javascript Template Mode Pattern</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Coffee-or-Tea"><a href="#Coffee-or-Tea" class="headerlink" title="Coffee or Tea"></a>Coffee or Tea</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Coffee</span></span><br><span class="line"><span class="keyword">var</span> Coffee = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.boilWater = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'boil water'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.brewCoffeeGriends = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'brew Coffee Griends'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.addSugarAndMilk = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'add sugar and milk'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.boilWater();</span><br><span class="line">    <span class="keyword">this</span>.brewCoffeeGriends();</span><br><span class="line">    <span class="keyword">this</span>.addSugarAndMilk();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coffee = <span class="keyword">new</span> Coffee();</span><br><span class="line">coffee.init();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Tea</span></span><br><span class="line"><span class="keyword">var</span> Tea = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Tea.prototype.boilWater = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'boil water'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Tea.prototype.steepTeaBag = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'brew Tea Griends'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Tea.prototype.addLemon = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'add lemon'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Tea.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.boilWater();</span><br><span class="line">    <span class="keyword">this</span>.steepTeaBag();</span><br><span class="line">    <span class="keyword">this</span>.addLemon();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> tea = <span class="keyword">new</span> Tea();</span><br><span class="line">tea.init();</span><br></pre></td></tr></table></figure>
-<h2 id="build-a-Beverage-Function"><a href="#build-a-Beverage-Function" class="headerlink" title="build a Beverage Function"></a>build a Beverage Function</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Beverage</span></span><br><span class="line"><span class="keyword">var</span> Beverage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;; <span class="comment">//　のみもの</span></span><br><span class="line"></span><br><span class="line">Beverage.prototype.boilWater = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'boil water'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Beverage.prototype.brew = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;; <span class="comment">// 空の関数、サブクラスでoverridden</span></span><br><span class="line"></span><br><span class="line">Beverage.prototype.addCondiments = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;; <span class="comment">// 空の関数、サブクラスでoverridden</span></span><br><span class="line"></span><br><span class="line">Beverage.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.boilWater();</span><br><span class="line">    <span class="keyword">this</span>.brew();</span><br><span class="line">    <span class="keyword">this</span>.addCondiments();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Coffee = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype = <span class="keyword">new</span> Beverage();</span><br><span class="line"></span><br><span class="line">Coffee.prototype.brew = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'醸造コーヒー'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.addCondiments = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'砂糖と牛乳を入れる'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coffee = <span class="keyword">new</span> Coffee();</span><br><span class="line">coffee.init();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 砂糖と牛乳を加えたくない場合、どう？</span></span><br><span class="line">Beverage.prototype.customerWantCondiments = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Beverage.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.boilWater();</span><br><span class="line">    <span class="keyword">this</span>.brew();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.customerWantCondiments) &#123;</span><br><span class="line">        <span class="keyword">this</span>.addCondiments();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Coffee = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype = <span class="keyword">new</span> Beverage();</span><br><span class="line"></span><br><span class="line">Coffee.prototype.brew = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'醸造コーヒー'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.addCondiments = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'砂糖と牛乳を入れる'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Coffee.prototype.customerWantCondiments = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">window</span>.confirm( <span class="string">'調味料が必要ですか？'</span> );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coffee = <span class="keyword">new</span> Coffee();</span><br><span class="line">coffee.init();</span><br></pre></td></tr></table></figure>
-<h2 id="Javascript-Template-Mode"><a href="#Javascript-Template-Mode" class="headerlink" title="Javascript Template Mode"></a>Javascript Template Mode</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Beverage = <span class="function"><span class="keyword">function</span>(<span class="params"> param </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> boilWater = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">'boil water'</span> );</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> brew = param.brew || <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>( <span class="string">'brew function 必要'</span> );</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> addCondiments = param.addCondiments || <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>( <span class="string">'addCondiments 必要'</span> );</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    F.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        boilWater();</span><br><span class="line">        brew();</span><br><span class="line">        addCondiments();</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> F;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Coffee = Beverage(&#123;</span><br><span class="line">    brew: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">'醸造コーヒー'</span> );</span><br><span class="line">    &#125;,</span><br><span class="line">    addCondiments: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">'砂糖と牛乳を入れる'</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coffee = <span class="keyword">new</span> Coffee();</span><br><span class="line">coffee.init();</span><br></pre></td></tr></table></figure>
-<p>テンプレートメソッドパターンは、パッケージの変更によりシステムのスケーラビリティを向上させる典型的な設計パターンです。オブジェクト指向言語では、テンプレートメソッドパターンを使用するプログラムでは、サブクラスのメソッドタイプと実行順序は変わらないため、ロジックのこの部分は、親クラスのテンプレートメソッドに抽象化されます。サブクラスメソッドの実装方法は変更可能なため、これを採用します部分的に変更されたロジックはサブクラスにカプセル化されます。新しいサブクラスを追加することにより、システムに新しい関数を変更せずに追加できます。抽象親クラスと他のサブクラスを移動することも、開放性と閉鎖性の原則に沿っています。<br>しかし、JavaScriptでは、テンプレートメソッドパターン、高階関数を実装するために同じパターンに従う必要はありません。より良い選択です。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/11/28/Javascript-Template-Mode-Pattern/" data-id="ckhnrl6020006psvgvqhpatk8" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="cki6s1q720004nwvgcvl7odo3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -579,7 +605,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
     </div>
   </div>
 
@@ -590,6 +616,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/12/02/打家劫舍/">打家劫舍</a>
+          </li>
         
           <li>
             <a href="/2020/11/19/面试/判断括号/">判断括号</a>
@@ -605,10 +635,6 @@
         
           <li>
             <a href="/2020/11/12/http/手写Promise/">手写Promise</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/09/函数柯里化/">函数柯里化</a>
           </li>
         
       </ul>
