@@ -123,7 +123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/12/02/打家劫舍/" data-id="cki6s1q7k000enwvgnpriu7lv" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/12/02/打家劫舍/" data-id="ckt44813x000iugvg9thqk539" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/19/面试/判断括号/" data-id="cki6s1q9c0013nwvg7109cf09" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/19/面试/判断括号/" data-id="ckt448153000qugvgo5bpjs83" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/13/面试/" data-id="cki6s1q7o000inwvgo4i0m8ke" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/13/面试/" data-id="ckt44813z000kugvgaomrokm9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -256,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/13/http/ajax/" data-id="cki6s1q9b0011nwvg9gfk57ng" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/13/http/ajax/" data-id="ckt44814v000mugvgv9iwjv2t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -293,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/12/http/手写Promise/" data-id="cki6s1q97000xnwvglj1y00jq" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/12/http/手写Promise/" data-id="ckt44814x000nugvgv6dp9zjc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/函数柯里化/" data-id="cki6s1q7l000fnwvgphvtbm4m" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/函数柯里化/" data-id="ckt44813r000dugvg089lwy2r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -396,7 +396,7 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 微任务</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'p 1'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 宏任务</span></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">new</span> <span class="built_in">Date</span>() - s &lt; <span class="number">50</span>); <span class="comment">// 阻塞50ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 微任务</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'p 2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script ent'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*** output ***/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// one macro task</span></span><br><span class="line">script start</span><br><span class="line">script ent</span><br><span class="line"></span><br><span class="line"><span class="comment">// all micro tasks</span></span><br><span class="line">p <span class="number">1</span></span><br><span class="line">p <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// one macro task again</span></span><br><span class="line">setTimeout</span><br></pre></td></tr></table></figure>
 <p>上面之所以加50ms的阻塞，是因为 setTimeout 的 delayTime 最少是 4ms. 为了避免认为 setTimeout 是因为4ms的延迟而后面才被执行的，我们加了50ms阻塞。</p>
-<p>例题：</p>
+<p>例题：（来自winter的重学前端）</p>
 <pre><code>- 我们现在要实现一个红绿灯，把一个圆形 div 按照绿色 3 秒，黄色 1 秒，红色 2 秒循环改变背景色，你会怎样编写这个代码呢？
 </code></pre><p>思路：</p>
 <pre><code>- 用promise把setTimeout函数封装成为可用于异步的函数
@@ -405,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="cki6s1q7m000gnwvgexfs4kau" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="ckt44813u000fugvgf2wxvoe1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -443,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/08/dp/最长公共子序列/" data-id="cki6s1q98000znwvgbl6ut55c" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/08/dp/最长公共子序列/" data-id="ckt44814y000ougvgluoth7e7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
@@ -511,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/06/动态规划/" data-id="cki6s1q7d000bnwvgbwxk85z6" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/06/动态规划/" data-id="ckt44813t000eugvgjn5rnvag" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
@@ -556,7 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="cki6s1q720004nwvgcvl7odo3" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ckt44813a0003ugvgckbusg4j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
@@ -649,7 +649,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Warming<br>
+      &copy; 2021 Warming<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

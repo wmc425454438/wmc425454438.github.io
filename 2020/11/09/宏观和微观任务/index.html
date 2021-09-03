@@ -15,7 +15,7 @@
 <meta property="og:description" content="概览 宏观任务和微观任务（Macro Task and Micro Task）Js 中，有两类任务队列：宏任务队列（macro tasks）和微任务队列（micro tasks）。宏任务队列可以有多个，微任务队列只有一个。那么什么任务，会分到哪个队列呢？  宏任务：script（全局任务）, setTimeout, setInterval, setImmediate, I/O, UI rend">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://segmentfault.com/img/bVU9kG?w=922&h=706">
-<meta property="og:updated_time" content="2020-11-08T18:13:19.910Z">
+<meta property="og:updated_time" content="2021-06-01T12:22:13.794Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="宏观和微观任务">
 <meta name="twitter:description" content="概览 宏观任务和微观任务（Macro Task and Micro Task）Js 中，有两类任务队列：宏任务队列（macro tasks）和微任务队列（micro tasks）。宏任务队列可以有多个，微任务队列只有一个。那么什么任务，会分到哪个队列呢？  宏任务：script（全局任务）, setTimeout, setInterval, setImmediate, I/O, UI rend">
@@ -112,7 +112,7 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 微任务</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'p 1'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 宏任务</span></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">new</span> <span class="built_in">Date</span>() - s &lt; <span class="number">50</span>); <span class="comment">// 阻塞50ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 微任务</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'p 2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script ent'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*** output ***/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// one macro task</span></span><br><span class="line">script start</span><br><span class="line">script ent</span><br><span class="line"></span><br><span class="line"><span class="comment">// all micro tasks</span></span><br><span class="line">p <span class="number">1</span></span><br><span class="line">p <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// one macro task again</span></span><br><span class="line">setTimeout</span><br></pre></td></tr></table></figure>
 <p>上面之所以加50ms的阻塞，是因为 setTimeout 的 delayTime 最少是 4ms. 为了避免认为 setTimeout 是因为4ms的延迟而后面才被执行的，我们加了50ms阻塞。</p>
-<p>例题：</p>
+<p>例题：（来自winter的重学前端）</p>
 <pre><code>- 我们现在要实现一个红绿灯，把一个圆形 div 按照绿色 3 秒，黄色 1 秒，红色 2 秒循环改变背景色，你会怎样编写这个代码呢？
 </code></pre><p>思路：</p>
 <pre><code>- 用promise把setTimeout函数封装成为可用于异步的函数
@@ -121,7 +121,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="cki6s1q7m000gnwvgexfs4kau" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="ckt44813u000fugvgf2wxvoe1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,7 +224,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Warming<br>
+      &copy; 2021 Warming<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
