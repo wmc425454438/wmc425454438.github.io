@@ -66,6 +66,305 @@
       <div class="outer">
         <section id="main">
   
+    <article id="git-操作心得" class="article article-type-git" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/06/21/操作心得/" class="article-date">
+  <time datetime="2022-06-21T08:37:22.000Z" itemprop="datePublished">2022-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/21/操作心得/">操作心得</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Git-操作心得"><a href="#Git-操作心得" class="headerlink" title="Git 操作心得"></a>Git 操作心得</h2><ul>
+<li>日常开发分支切换提交</li>
+</ul>
+<ol>
+<li>先从最新的 <code>master</code> 分支切一个开发分支 <code>develop_master</code> 出来</li>
+<li>将新切出来的分支推送到远程 <code>origin</code></li>
+<li>从新分支切一个自己的本地分支 <code>develop_local</code></li>
+<li>在本地的分支上进行开发</li>
+<li>如果要提交，先更新远程分支 <code>develop_master</code></li>
+<li>在自己的本地分支 <code>develop_local</code> 进行 <code>git rebase develop_master</code> 变基操作</li>
+<li>切换到远程分支 <code>develop_master</code> 将本地分支合并到远程分支上 <code>git merge --no-ff develop_local</code> 并推送 <code>git push</code></li>
+<li>删除自己的本地分支 <code>git branch -D develop_local</code></li>
+</ol>
+<p><strong>之后每次修改分支上的内容最好从最新的远程分支切换新分支，这样可以保证我们每次的变基操作不会影响其他人的提交</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://warming90.xyz/2022/06/21/操作心得/" data-id="cl4nxb025000lnovg2tn4ut31" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iphone尺寸" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/05/16/iphone尺寸/" class="article-date">
+  <time datetime="2022-05-16T07:15:20.125Z" itemprop="datePublished">2022-05-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <table>
+<thead>
+<tr>
+<th style="text-align:left">机型</th>
+<th style="text-align:left">物理像素</th>
+<th style="text-align:left">逻辑像素</th>
+<th style="text-align:left">规格</th>
+<th style="text-align:left">对角线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">iPhone 13</td>
+<td style="text-align:left">1284*2778px</td>
+<td style="text-align:left">428*926pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">6.7英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 13 Pro</td>
+<td style="text-align:left">1170*2532px</td>
+<td style="text-align:left">390*844pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">6.1英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 13</td>
+<td style="text-align:left">1170*2532px</td>
+<td style="text-align:left">390*844pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">6.1英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 13 mini</td>
+<td style="text-align:left">1080*2340px</td>
+<td style="text-align:left">360*780pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">5.4英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 12 Pro Max</td>
+<td style="text-align:left">1284*2778px</td>
+<td style="text-align:left">428*926pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">6.7英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 12 Pro</td>
+<td style="text-align:left">1170*2532px</td>
+<td style="text-align:left">390*844pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">6.1英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 12</td>
+<td style="text-align:left">1170*2532px</td>
+<td style="text-align:left">390*844pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">6.1英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 12 mini</td>
+<td style="text-align:left">1080*2340px</td>
+<td style="text-align:left">360*780pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">5.4英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 11 Pro Max</td>
+<td style="text-align:left">1242*2688px</td>
+<td style="text-align:left">414*896pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">6.5英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 11 Pro</td>
+<td style="text-align:left">1125*2436px</td>
+<td style="text-align:left">375*812pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">5.8英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 11</td>
+<td style="text-align:left">828*1792px</td>
+<td style="text-align:left">414*896pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">6.1英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone SE2</td>
+<td style="text-align:left">750*1334px</td>
+<td style="text-align:left">375*667pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">4.7英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone Xs Max</td>
+<td style="text-align:left">1242*2688px</td>
+<td style="text-align:left">414*896pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">6.5英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone XR</td>
+<td style="text-align:left">828*1792px</td>
+<td style="text-align:left">414*896pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">6.1英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone Xs</td>
+<td style="text-align:left">1125*2436px</td>
+<td style="text-align:left">375*812pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">5.8英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone X</td>
+<td style="text-align:left">1125*2436px</td>
+<td style="text-align:left">375*812pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">5.8英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 8 Plus</td>
+<td style="text-align:left">1242*2208px</td>
+<td style="text-align:left">414*736pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">5.5英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 8</td>
+<td style="text-align:left">750*1334px</td>
+<td style="text-align:left">375*667pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">4.7英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 7 Plus</td>
+<td style="text-align:left">1242*2208px</td>
+<td style="text-align:left">414*736pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">5.5英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 7</td>
+<td style="text-align:left">750*1334px</td>
+<td style="text-align:left">375*667pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">4.7英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 6s Plus</td>
+<td style="text-align:left">1242*2208px</td>
+<td style="text-align:left">414*736pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">5.5英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 6s</td>
+<td style="text-align:left">750*1334px</td>
+<td style="text-align:left">375*667pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">4.7英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 6 Plus</td>
+<td style="text-align:left">1242*2208px</td>
+<td style="text-align:left">414*736pt</td>
+<td style="text-align:left">@3x</td>
+<td style="text-align:left">5.5英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 6</td>
+<td style="text-align:left">750*1334px</td>
+<td style="text-align:left">375*667pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">4.7英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone SE</td>
+<td style="text-align:left">640*1136px</td>
+<td style="text-align:left">320*568pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">4英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 5s</td>
+<td style="text-align:left">640*1136px</td>
+<td style="text-align:left">320*568pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">4英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 5c</td>
+<td style="text-align:left">640*1136px</td>
+<td style="text-align:left">320*568pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">4英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 5</td>
+<td style="text-align:left">640*1136px</td>
+<td style="text-align:left">320*568pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">4英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 4s</td>
+<td style="text-align:left">640*960px</td>
+<td style="text-align:left">320*480pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">3.5英寸</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone 4</td>
+<td style="text-align:left">640*960px</td>
+<td style="text-align:left">320*480pt</td>
+<td style="text-align:left">@2x</td>
+<td style="text-align:left">3.5英寸</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://warming90.xyz/2022/05/16/iphone尺寸/" data-id="cl4nxb01w000cnovgczjv68wj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-打家劫舍" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/12/02/打家劫舍/" class="article-date">
@@ -125,7 +424,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/12/02/打家劫舍/" data-id="ckt44st7m000h24vgzmyq3gfz" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/12/02/打家劫舍/" data-id="cl4nxb024000knovg5iiaa3wn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,7 +472,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/19/面试/判断括号/" data-id="ckt44st90001324vgjfjhdwur" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/19/面试/判断括号/" data-id="cl4nxb0330013novg3dc8yaf7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -218,7 +517,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/13/面试/" data-id="ckt44st7n000j24vgnt6ucxdp" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/13/面试/" data-id="cl4nxb026000mnovgmp6fveht" class="article-share-link">Share</a>
       
       
     </footer>
@@ -258,7 +557,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/13/http/ajax/" data-id="ckt44st8v000x24vgi0ix0p89" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/13/http/ajax/" data-id="cl4nxb0310011novgkuhjot18" class="article-share-link">Share</a>
       
       
     </footer>
@@ -295,7 +594,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/12/http/手写Promise/" data-id="ckt44st8w000z24vg8nfhnco0" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/12/http/手写Promise/" data-id="cl4nxb0340015novganutvw6s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -344,7 +643,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/函数柯里化/" data-id="ckt44st7d000b24vgo5fwnytj" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/函数柯里化/" data-id="cl4nxb01y000enovgsjd4vqvo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -407,7 +706,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="ckt44st7i000e24vgwoj6adza" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="cl4nxb022000hnovgj0nw0rku" class="article-share-link">Share</a>
       
       
     </footer>
@@ -445,123 +744,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/08/dp/最长公共子序列/" data-id="ckt44st8y001124vgo020oeqh" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/08/dp/最长公共子序列/" data-id="cl4nxb030000znovgavdsrtlp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-动态规划" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/06/动态规划/" class="article-date">
-  <time datetime="2020-11-05T19:16:35.000Z" itemprop="datePublished">2020-11-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/06/动态规划/">动态规划</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>  动态规划英文 <em>Dynamic Programming</em>，是求解决策过程最优化的数学方法，后来沿用到了编程领域。<br>  动态规划的大致思路是把一个复杂的问题转化成一个分阶段逐步递推的过程，从简单的初始状态一步一步递推，最终得到复杂问题的最优解。<br>  动态规划解决问题的过程分为两步：</p>
-<ol>
-<li>寻找<strong>状态转移方程</strong></li>
-<li>利用状态转移方程式<strong>自底向上</strong>求解问题</li>
-</ol>
-<h2 id="爬楼梯问题"><a href="#爬楼梯问题" class="headerlink" title="爬楼梯问题"></a>爬楼梯问题</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度O(N)，空间复杂度O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">climbingWays</span>(<span class="params">n</span>) </span>&#123; <span class="comment">// 爬到n阶楼梯的方法个数</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 假设楼梯一次只能爬一级或者两级</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(n &lt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 由于爬楼梯阶层只需要前两级阶层的个数，只需保存两个数就可以</span></span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">var</span> temp = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    temp = a + b;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="挖金矿问题"><a href="#挖金矿问题" class="headerlink" title="挖金矿问题"></a>挖金矿问题</h3><p>假设有<code>n</code>个金矿，<code>w</code>个工人，每座金矿需要的工人和金矿量分别用<code>p[]</code>和<code>g[]</code>来表示。<br>问：所有工人挖去金矿的最大值。</p>
-<p>由于最后一座金矿有两种情况：挖或者不挖。</p>
-<ul>
-<li><p>最大子结构有两种情况：</p>
-<ul>
-<li><code>w</code>个工人挖<code>n-1</code>个金矿</li>
-<li><code>w-p[n-1]</code>个工人挖<code>n-1</code>个金矿 + <code>g[n-1]</code></li>
-</ul>
-</li>
-<li><p>边界情况</p>
-<ul>
-<li>人手不够，不够挖一座金矿，或者没有金矿</li>
-<li>所有人挖第一座金矿</li>
-</ul>
-</li>
-</ul>
-<h4 id="状态转移方程"><a href="#状态转移方程" class="headerlink" title="状态转移方程"></a>状态转移方程</h4><ul>
-<li>f(n, w) = 0 (n &lt;= 1, w &lt; p[0]) 无金矿或者人手不足</li>
-<li>f(n, w) = g[0] (n == 1, w &gt;= p[0]) 人手足够，只挖第一个金矿</li>
-<li>f(n, w) = f(n-1, w) (n &gt; 1, w &lt; p[n-1])  剩余人数少于这个金矿的所需人数</li>
-<li>f(n, w) = max(f(n-1, w), f(n-1, w - p[n-1]) + g[n-1]) (n &gt; 1, w &gt;= p[n-1])  工人充足的情况</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMostGold</span>(<span class="params">num, workers, gold, person</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> preResult = [];</span><br><span class="line">  <span class="keyword">var</span> result = [];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 先判断边界条件</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= num; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(i &lt; person[<span class="number">0</span>]) &#123;</span><br><span class="line">        preResult[i] = <span class="number">0</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        preResult[i] = gold[<span class="number">0</span>];</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 从第二行开始，按照前一行的数据进行计算</span></span><br><span class="line">  <span class="comment">// i代表第i座金矿，j代表当前工人个数</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; num; i++) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt;= workers; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(j &lt; person[i]) &#123;</span><br><span class="line">        result[j] = preResult[j];</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        result[j] = <span class="built_in">Math</span>.max(preResult[j], preResult[j-person[i]]+gold[i])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 把当前的值传给上一层，继续遍历</span></span><br><span class="line">    preResult = result;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result[num]; <span class="comment">// 最后返回最大值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong><em>工人数较大时，需要开辟的空间单位会变大，这时使用递归反而会变得简单</em></strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/06/动态规划/" data-id="ckt44st7g000d24vgp68mewuv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Javascript-Flyweight-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/01/Javascript-Flyweight-Pattern/" class="article-date">
-  <time datetime="2019-11-30T16:00:00.000Z" itemprop="datePublished">2019-12-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/01/Javascript-Flyweight-Pattern/">Javascript Flyweight Pattern</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>フライウェイトモードはパフォーマンスの最適化のためのモードです。ここでいう「フライ」とはハエを意味し、フライ級を意味します。 Flyweightパターンの中核は、共有テクノロジーを使用して、多数の細粒度オブジェクトを効果的にサポートすることです。</p>
-</blockquote>
-<h2 id="first-demo"><a href="#first-demo" class="headerlink" title="first demo"></a>first demo</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Model = <span class="function"><span class="keyword">function</span>(<span class="params">sex, underwear</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.sex = sex;</span><br><span class="line">    <span class="keyword">this</span>.underwear = underwear;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Model.prototype.takephoto = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'sex: '</span> +  <span class="keyword">this</span>.sex, <span class="string">'underware: '</span> + <span class="keyword">this</span>.underwear);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">50</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> maleModel = <span class="keyword">new</span> Model(<span class="string">'female'</span>, <span class="string">'underwear'</span> + i );</span><br><span class="line">    maleModel.takephoto();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上記のメソッドは50個の <code>Model</code>オブジェクトを作成しますが、ここでそれほど多くのオブジェクトを作成する必要はありません。 1つのオブジェクトを使用して、異なる下着のシリアル番号を一度に印刷できます。書き直しましょう：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Model = <span class="function"><span class="keyword">function</span>(<span class="params">sex</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.sex = sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Model.prototype.takephoto = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'sex: '</span> +  <span class="keyword">this</span>.sex, <span class="string">'underware: '</span> + <span class="keyword">this</span>.underwear);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> maleModel = <span class="keyword">new</span> Model(<span class="string">'female'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">50</span>; i++) &#123;</span><br><span class="line">    maleModel.underwear = <span class="string">'underwear'</span> + i;</span><br><span class="line">    maleModel.takephoto();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>フライウェイトモードは、パフォーマンスの問題を解決するために生まれたモードであり、ほとんどのモードの誕生の理由とは異なります。存在の中で同様のオブジェクトが多数あるシステムでは、Flyweightは多数のオブジェクトによって引き起こされるパフォーマンスの問題を解決できます。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2019/12/01/Javascript-Flyweight-Pattern/" data-id="ckt44st70000224vgrm00foom" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Patterns/">Design Patterns</a></li></ul>
 
     </footer>
   </div>
@@ -607,7 +793,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
     </div>
   </div>
 
@@ -620,6 +806,14 @@
       <ul>
         
           <li>
+            <a href="/2022/06/21/操作心得/">操作心得</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/16/iphone尺寸/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2020/12/02/打家劫舍/">打家劫舍</a>
           </li>
         
@@ -629,14 +823,6 @@
         
           <li>
             <a href="/2020/11/13/面试/">面试</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/13/http/ajax/">ajax</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/12/http/手写Promise/">手写Promise</a>
           </li>
         
       </ul>
@@ -651,7 +837,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2021 Warming<br>
+      &copy; 2022 Warming<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

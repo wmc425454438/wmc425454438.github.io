@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives | Warming&#39;s Blog</title>
+  <title>操作心得 | Warming&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Warming&#39;s Blog">
-<meta property="og:url" content="http://warming90.xyz/archives/page/3/index.html">
+  <meta name="description" content="Git 操作心得 日常开发分支切换提交   先从最新的 master 分支切一个开发分支 develop_master 出来 将新切出来的分支推送到远程 origin 从新分支切一个自己的本地分支 develop_local 在本地的分支上进行开发 如果要提交，先更新远程分支 develop_master 在自己的本地分支 develop_local 进行 git rebase develop_m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作心得">
+<meta property="og:url" content="http://warming90.xyz/2022/06/21/操作心得/index.html">
 <meta property="og:site_name" content="Warming&#39;s Blog">
+<meta property="og:description" content="Git 操作心得 日常开发分支切换提交   先从最新的 master 分支切一个开发分支 develop_master 出来 将新切出来的分支推送到远程 origin 从新分支切一个自己的本地分支 develop_local 在本地的分支上进行开发 如果要提交，先更新远程分支 develop_master 在自己的本地分支 develop_local 进行 git rebase develop_m">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2022-06-21T08:46:50.753Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Warming&#39;s Blog">
+<meta name="twitter:title" content="操作心得">
+<meta name="twitter:description" content="Git 操作心得 日常开发分支切换提交   先从最新的 master 分支切一个开发分支 develop_master 出来 将新切出来的分支推送到远程 origin 从新分支切一个自己的本地分支 develop_local 在本地的分支上进行开发 如果要提交，先更新远程分支 develop_master 在自己的本地分支 develop_local 进行 git rebase develop_m">
   
     <link rel="alternate" href="/atom.xml" title="Warming&#39;s Blog" type="application/atom+xml">
   
@@ -64,150 +68,65 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/03/代码检查工具eslint，是时候认识它了/" class="archive-article-date">
-  <time datetime="2019-11-03T05:58:11.000Z" itemprop="datePublished">11月 3</time>
+        <section id="main"><article id="git-操作心得" class="article article-type-git" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/06/21/操作心得/" class="article-date">
+  <time datetime="2022-06-21T08:37:22.000Z" itemprop="datePublished">2022-06-21</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/03/代码检查工具eslint，是时候认识它了/">代码检查工具eslint，是时候认识它了</a>
+    <h1 class="article-title" itemprop="name">
+      操作心得
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Git-操作心得"><a href="#Git-操作心得" class="headerlink" title="Git 操作心得"></a>Git 操作心得</h2><ul>
+<li>日常开发分支切换提交</li>
+</ul>
+<ol>
+<li>先从最新的 <code>master</code> 分支切一个开发分支 <code>develop_master</code> 出来</li>
+<li>将新切出来的分支推送到远程 <code>origin</code></li>
+<li>从新分支切一个自己的本地分支 <code>develop_local</code></li>
+<li>在本地的分支上进行开发</li>
+<li>如果要提交，先更新远程分支 <code>develop_master</code></li>
+<li>在自己的本地分支 <code>develop_local</code> 进行 <code>git rebase develop_master</code> 变基操作</li>
+<li>切换到远程分支 <code>develop_master</code> 将本地分支合并到远程分支上 <code>git merge --no-ff develop_local</code> 并推送 <code>git push</code></li>
+<li>删除自己的本地分支 <code>git branch -D develop_local</code></li>
+</ol>
+<p><strong>之后每次修改分支上的内容最好从最新的远程分支切换新分支，这样可以保证我们每次的变基操作不会影响其他人的提交</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://warming90.xyz/2022/06/21/操作心得/" data-id="cl4nxb025000lnovg2tn4ut31" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/05/16/iphone尺寸/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/03/小程序首页加载白屏/" class="archive-article-date">
-  <time datetime="2019-11-03T05:58:03.000Z" itemprop="datePublished">11月 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/03/小程序首页加载白屏/">小程序首页加载白屏问题分析</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/08/11/PC网站制作的一些注意点/" class="archive-article-date">
-  <time datetime="2018-08-10T17:14:25.000Z" itemprop="datePublished">8月 11</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/11/PC网站制作的一些注意点/">PC网站制作</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/14/简单的双向绑定/" class="archive-article-date">
-  <time datetime="2018-07-14T15:25:38.000Z" itemprop="datePublished">7月 14</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/14/简单的双向绑定/">绑定和委托</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/23/RCA听过没？这次就能知道了/" class="archive-article-date">
-  <time datetime="2018-05-22T17:38:01.000Z" itemprop="datePublished">5月 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/23/RCA听过没？这次就能知道了/">RCA听过没？这次就能知道了</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/20/手机连不上电脑？那是你笨/" class="archive-article-date">
-  <time datetime="2018-05-20T07:57:05.000Z" itemprop="datePublished">5月 20</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/20/手机连不上电脑？那是你笨/">weex phone cant connet to computer</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
 
 </section>
         
