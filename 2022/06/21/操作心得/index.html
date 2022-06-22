@@ -5,18 +5,18 @@
   
 
   
-  <title>操作心得 | Warming&#39;s Blog</title>
+  <title>Git 操作心得 | Warming&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Git 操作心得 日常开发分支切换提交   先从最新的 master 分支切一个开发分支 develop_master 出来 将新切出来的分支推送到远程 origin 从新分支切一个自己的本地分支 develop_local 在本地的分支上进行开发 如果要提交，先更新远程分支 develop_master 在自己的本地分支 develop_local 进行 git rebase develop_m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作心得">
+<meta property="og:title" content="Git 操作心得">
 <meta property="og:url" content="http://warming90.xyz/2022/06/21/操作心得/index.html">
 <meta property="og:site_name" content="Warming&#39;s Blog">
 <meta property="og:description" content="Git 操作心得 日常开发分支切换提交   先从最新的 master 分支切一个开发分支 develop_master 出来 将新切出来的分支推送到远程 origin 从新分支切一个自己的本地分支 develop_local 在本地的分支上进行开发 如果要提交，先更新远程分支 develop_master 在自己的本地分支 develop_local 进行 git rebase develop_m">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2022-06-21T08:46:50.753Z">
+<meta property="og:updated_time" content="2022-06-22T07:31:17.751Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="操作心得">
+<meta name="twitter:title" content="Git 操作心得">
 <meta name="twitter:description" content="Git 操作心得 日常开发分支切换提交   先从最新的 master 分支切一个开发分支 develop_master 出来 将新切出来的分支推送到远程 origin 从新分支切一个自己的本地分支 develop_local 在本地的分支上进行开发 如果要提交，先更新远程分支 develop_master 在自己的本地分支 develop_local 进行 git rebase develop_m">
   
     <link rel="alternate" href="/atom.xml" title="Warming&#39;s Blog" type="application/atom+xml">
@@ -68,7 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="git-操作心得" class="article article-type-git" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-操作心得" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/06/21/操作心得/" class="article-date">
   <time datetime="2022-06-21T08:37:22.000Z" itemprop="datePublished">2022-06-21</time>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      操作心得
+      Git 操作心得
     </h1>
   
 
@@ -104,11 +104,18 @@
 <li>删除自己的本地分支 <code>git branch -D develop_local</code></li>
 </ol>
 <p><strong>之后每次修改分支上的内容最好从最新的远程分支切换新分支，这样可以保证我们每次的变基操作不会影响其他人的提交</strong></p>
+<p><strong>注意官方提示的<code>rebase</code>的操作提示，再变基前要确认没有将该分支推送或者合并到远端</strong></p>
+<p>例如我用本地分支变基过master，提交了新的commit到远端并合并到了测试分支uat。之后本地分支不能再变基master了。只能将master合并到本地分支。并且，本地切换出来的开发分支必须在变基本地分支之后及时删除。保证每次提交后用的都是最新分支。</p>
+<p>变基的好处就是可以将自己的commit可以放到最前面。清晰的看出来当前commit的操作。</p>
+<ul>
+<li>Rebase -i 合并commit</li>
+</ul>
+<p>一般用于本地开发时，还未推送到远端时操作，可以将几个commit合并成一个。用于操作git的操作记录是一个比较好的手段。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2022/06/21/操作心得/" data-id="cl4nxb025000lnovg2tn4ut31" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2022/06/21/操作心得/" data-id="cl4pa1waz000k04vgnk9tydmn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +178,7 @@
       <ul>
         
           <li>
-            <a href="/2022/06/21/操作心得/">操作心得</a>
+            <a href="/2022/06/21/操作心得/">Git 操作心得</a>
           </li>
         
           <li>

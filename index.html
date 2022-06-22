@@ -66,7 +66,7 @@
       <div class="outer">
         <section id="main">
   
-    <article id="git-操作心得" class="article article-type-git" itemscope itemprop="blogPost">
+    <article id="post-操作心得" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/06/21/操作心得/" class="article-date">
   <time datetime="2022-06-21T08:37:22.000Z" itemprop="datePublished">2022-06-21</time>
@@ -80,7 +80,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/21/操作心得/">操作心得</a>
+      <a class="article-title" href="/2022/06/21/操作心得/">Git 操作心得</a>
     </h1>
   
 
@@ -102,11 +102,18 @@
 <li>删除自己的本地分支 <code>git branch -D develop_local</code></li>
 </ol>
 <p><strong>之后每次修改分支上的内容最好从最新的远程分支切换新分支，这样可以保证我们每次的变基操作不会影响其他人的提交</strong></p>
+<p><strong>注意官方提示的<code>rebase</code>的操作提示，再变基前要确认没有将该分支推送或者合并到远端</strong></p>
+<p>例如我用本地分支变基过master，提交了新的commit到远端并合并到了测试分支uat。之后本地分支不能再变基master了。只能将master合并到本地分支。并且，本地切换出来的开发分支必须在变基本地分支之后及时删除。保证每次提交后用的都是最新分支。</p>
+<p>变基的好处就是可以将自己的commit可以放到最前面。清晰的看出来当前commit的操作。</p>
+<ul>
+<li>Rebase -i 合并commit</li>
+</ul>
+<p>一般用于本地开发时，还未推送到远端时操作，可以将几个commit合并成一个。用于操作git的操作记录是一个比较好的手段。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2022/06/21/操作心得/" data-id="cl4nxb025000lnovg2tn4ut31" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2022/06/21/操作心得/" data-id="cl4pa1waz000k04vgnk9tydmn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -355,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2022/05/16/iphone尺寸/" data-id="cl4nxb01w000cnovgczjv68wj" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2022/05/16/iphone尺寸/" data-id="cl4pa1war000c04vghwcktz4m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -424,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/12/02/打家劫舍/" data-id="cl4nxb024000knovg5iiaa3wn" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/12/02/打家劫舍/" data-id="cl4pa1way000j04vgj65l3q90" class="article-share-link">Share</a>
       
       
     </footer>
@@ -472,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/19/面试/判断括号/" data-id="cl4nxb0330013novg3dc8yaf7" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/19/面试/判断括号/" data-id="cl4pa1wce001504vgm7o8ryy4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -517,7 +524,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/13/面试/" data-id="cl4nxb026000mnovgmp6fveht" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/13/面试/" data-id="cl4pa1wb1000m04vgk6b2tqec" class="article-share-link">Share</a>
       
       
     </footer>
@@ -557,7 +564,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/13/http/ajax/" data-id="cl4nxb0310011novgkuhjot18" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/13/http/ajax/" data-id="cl4pa1wcc001104vgty1sv8nv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -594,7 +601,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/12/http/手写Promise/" data-id="cl4nxb0340015novganutvw6s" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/12/http/手写Promise/" data-id="cl4pa1wcd001304vgkpzozazm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -643,7 +650,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/函数柯里化/" data-id="cl4nxb01y000enovgsjd4vqvo" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/函数柯里化/" data-id="cl4pa1wat000e04vgi67v1b13" class="article-share-link">Share</a>
       
       
     </footer>
@@ -706,7 +713,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="cl4nxb022000hnovgj0nw0rku" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/09/宏观和微观任务/" data-id="cl4pa1wav000f04vgr13m6rcm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -744,7 +751,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://warming90.xyz/2020/11/08/dp/最长公共子序列/" data-id="cl4nxb030000znovgavdsrtlp" class="article-share-link">Share</a>
+      <a data-url="http://warming90.xyz/2020/11/08/dp/最长公共子序列/" data-id="cl4pa1wcb000z04vgi3rl5om8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
@@ -806,7 +813,7 @@
       <ul>
         
           <li>
-            <a href="/2022/06/21/操作心得/">操作心得</a>
+            <a href="/2022/06/21/操作心得/">Git 操作心得</a>
           </li>
         
           <li>
